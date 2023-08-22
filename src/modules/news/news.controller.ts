@@ -66,10 +66,10 @@ export class NewsController {
   })
   @HttpCode(HttpStatus.OK)
   async changeData(
-    @Body() positionData: UpdateNewsDto,
+    @Body() data: UpdateNewsDto,
     @Param('id') id: string,
   ): Promise<UpdateResult> {
-    return await this.newsService.change(positionData, id);
+    return await this.newsService.change(data, id);
   }
 
   @Delete('/:id')

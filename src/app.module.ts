@@ -8,6 +8,7 @@ import { UserModule } from './modules/user/user.module';
 import { NewsModule } from './modules/news/news.module';
 import { DocumentModule } from './modules/document/document.module';
 import { VacancyModule } from './modules/vacancy/vacancy.module';
+import { ManagementModule } from './modules/management/management.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { VacancyModule } from './modules/vacancy/vacancy.module';
     }),
     AuthModule,
     DocumentModule,
+    ManagementModule,
     NewsModule,
     UserModule,
     VacancyModule,

@@ -66,10 +66,10 @@ export class DocumentController {
   })
   @HttpCode(HttpStatus.OK)
   async changeData(
-    @Body() positionData: UpdateDocumentDto,
+    @Body() data: UpdateDocumentDto,
     @Param('id') id: string,
   ): Promise<UpdateResult> {
-    return await this.documentService.change(positionData, id);
+    return await this.documentService.change(data, id);
   }
 
   @Delete('/:id')
