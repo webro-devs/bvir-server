@@ -6,6 +6,7 @@ import configuration from '../config';
 import { AuthModule } from './modules/auth/auth.module';
 import { UserModule } from './modules/user/user.module';
 import { NewsModule } from './modules/news/news.module';
+import { DocumentModule } from './modules/document/document.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { NewsModule } from './modules/news/news.module';
       inject: [ConfigService],
     }),
     AuthModule,
+    DocumentModule,
     NewsModule,
     UserModule,
   ],
