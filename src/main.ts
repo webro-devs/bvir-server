@@ -35,7 +35,7 @@ async function bootstrap() {
   );
 
   const config = new DocumentBuilder()
-    .setTitle('B vir uz')
+    .setTitle('Bvir uz')
     .setDescription('B vir API description')
     .setVersion('0.2')
     .addBearerAuth()
