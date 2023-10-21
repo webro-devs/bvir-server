@@ -34,11 +34,11 @@ class UpdateDocumentDto {
   date: string;
 
   @ApiProperty({
-    description: `description`,
-    example: 'Document description',
+    description: `number`,
+    example: 'PPjf15-ll',
   })
   @IsOptional()
   @IsString()
-  description: string;
+  number: string;
 }
 export default UpdateDocumentDto;

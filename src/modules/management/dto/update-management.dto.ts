@@ -57,5 +57,14 @@ class UpdateManagementDto {
   @IsOptional()
   @IsString()
   gmail: string;
+
+
+  @ApiProperty({
+    description: `description`,
+    example: 'bla bla bla',
+  })
+  @IsOptional()
+  @IsString()
+  description: string;
 }
 export default UpdateManagementDto;

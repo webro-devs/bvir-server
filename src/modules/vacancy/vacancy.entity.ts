@@ -23,6 +23,9 @@ export class Vacancy {
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   date: string;
 
+  @Column({type:"boolean", default:true})
+  isActive:boolean = true
+
   @Column({ type: 'text' })
   description: string;
 }

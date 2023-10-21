@@ -18,5 +18,5 @@ export class Document {
   title: string;
 
   @Column({ type: 'text' })
-  description: string;
+  number: string;
 }

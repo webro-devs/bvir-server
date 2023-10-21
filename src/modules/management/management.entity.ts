@@ -25,4 +25,7 @@ export class Management {
 
   @Column({ type: 'text' })
   gmail: string;
+
+  @Column({ type: 'text' })
+  description: string;
 }

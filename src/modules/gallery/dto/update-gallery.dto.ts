@@ -1,13 +1,14 @@
 import { IsString, IsOptional } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
-class UpdateNewsDto {
+import { GalleryTypeEnum } from '../../../infra/shared/enum';
+class UpdateGalleryDto {
   @ApiProperty({
-    description: `title`,
-    example: 'News title',
+    description: `type`,
+    example: GalleryTypeEnum.PHOTO,
   })
   @IsOptional()
   @IsString()
-  readonly title: string;
+  type: GalleryTypeEnum;
 
   @ApiProperty({
     description: `url`,
@@ -18,14 +19,6 @@ class UpdateNewsDto {
   url: string;
 
   @ApiProperty({
-    description: `date`,
-    example: '2023-10-23',
-  })
-  @IsOptional()
-  @IsString()
-  date: string;
-
-  @ApiProperty({
     description: `description`,
     example: 'News description',
   })
@@ -33,4 +26,4 @@ class UpdateNewsDto {
   @IsString()
   description: string;
 }
-export default UpdateNewsDto;
+export default UpdateGalleryDto;

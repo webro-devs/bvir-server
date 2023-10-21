@@ -10,6 +10,7 @@ import { DocumentModule } from './modules/document/document.module';
 import { VacancyModule } from './modules/vacancy/vacancy.module';
 import { ManagementModule } from './modules/management/management.module';
 import { InteractiveServiceModule } from './modules/interactive-service/interactive-service.module';
+import { GalleryModule } from './modules/gallery/gallery.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { InteractiveServiceModule } from './modules/interactive-service/interact
     }),
     AuthModule,
     DocumentModule,
+    GalleryModule,
     InteractiveServiceModule,
     ManagementModule,
     NewsModule,

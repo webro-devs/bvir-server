@@ -57,6 +57,14 @@ class CreateManagementDto {
   @IsNotEmpty()
   @IsString()
   gmail: string;
+
+  @ApiProperty({
+    description: `description`,
+    example: 'bla bla bla',
+  })
+  @IsNotEmpty()
+  @IsString()
+  description: string;
 }
 
 export default CreateManagementDto;

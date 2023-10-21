@@ -32,7 +32,7 @@ export class User {
   @Column({ type: 'varchar' })
   password: string;
 
-  @Column({ type: 'int' })
+  @Column({ type: 'int', default:1 })
   role: UserRoleType;
 
   @Column({

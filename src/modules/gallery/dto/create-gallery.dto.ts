@@ -1,13 +1,14 @@
 import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
-class CreateNewsDto {
+import { GalleryTypeEnum } from '../../../infra/shared/enum';
+class CreateGalleryDto {
   @ApiProperty({
-    description: `title`,
-    example: 'News title',
+    description: `type`,
+    example: GalleryTypeEnum.PHOTO,
   })
   @IsNotEmpty()
   @IsString()
-  readonly title: string;
+  type: GalleryTypeEnum;
 
   @ApiProperty({
     description: `url`,
@@ -18,20 +19,12 @@ class CreateNewsDto {
   url: string;
 
   @ApiProperty({
-    description: `date`,
-    example: '2023-10-23',
-  })
-  @IsOptional()
-  @IsString()
-  date: string;
-
-  @ApiProperty({
     description: `description`,
-    example: 'News description',
+    example: 'Gallery description',
   })
   @IsNotEmpty()
   @IsString()
   description: string;
 }
 
-export default CreateNewsDto;
+export default CreateGalleryDto;

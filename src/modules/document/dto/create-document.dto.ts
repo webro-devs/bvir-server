@@ -34,12 +34,12 @@ class CreateDocumentDto {
   date: string;
 
   @ApiProperty({
-    description: `description`,
-    example: 'Document description',
+    description: `number`,
+    example: 'PPjf15-ll',
   })
   @IsNotEmpty()
   @IsString()
-  description: string;
+  number: string;
 }
 
 export default CreateDocumentDto;
