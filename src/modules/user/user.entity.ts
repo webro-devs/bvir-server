@@ -20,7 +20,7 @@ export class User {
   @Column({ type: 'varchar', nullable: true })
   lastName: string;
 
-  @Column({ type: 'varchar' })
+  @Column({ type: 'varchar', unique:true })
   login: string;
 
   @Column({ type: 'varchar', nullable: true })
