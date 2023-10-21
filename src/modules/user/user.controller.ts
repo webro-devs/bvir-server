@@ -20,7 +20,7 @@ import {
   ApiOperation,
 } from '@nestjs/swagger';
 
-import { CreateUserDto, UpdateClientDto, UpdateUserDto } from './dto';
+import { CreateUserDto, UpdateUserDto } from './dto';
 import { User } from './user.entity';
 import { UserService } from './user.service';
 import { PaginationDto } from '../../infra/shared/dto';
@@ -52,6 +52,7 @@ export class UserController {
     return this.userService.getOne(id);
   }
 
+  @Public()
   @Post('/')
   @ApiOperation({ summary: 'Method: creates new user' })
   @ApiCreatedResponse({

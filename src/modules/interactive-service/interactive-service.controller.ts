@@ -23,12 +23,14 @@ import { InteractiveService } from './interactive-service.entity';
 import { InteractiveServiceService } from './interactive-service.service';
 import { PaginationDto } from '../../infra/shared/dto';
 import { Route } from '../../infra/shared/decorators/route.decorator';
+import { Public } from '../auth/decorators/public.decorator';
 
 @ApiTags('InteractiveService')
 @Controller('interactive-service')
 export class InteractiveServiceController {
   constructor(private readonly interactiveServiceServiceService: InteractiveServiceService) {}
 
+  @Public()
   @Get('/')
   @ApiOperation({ summary: 'Method: returns all interactive-services' })
   @ApiOkResponse({
@@ -39,6 +41,7 @@ export class InteractiveServiceController {
     return await this.interactiveServiceServiceService.getAll({ ...query, route });
   }
 
+  @Public()
   @Get('/:id')
   @ApiOperation({ summary: 'Method: returns single interactive-service by id' })
   @ApiOkResponse({

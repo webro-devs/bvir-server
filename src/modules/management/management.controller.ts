@@ -23,12 +23,14 @@ import { Management } from './management.entity';
 import { ManagementService } from './management.service';
 import { PaginationDto } from '../../infra/shared/dto';
 import { Route } from '../../infra/shared/decorators/route.decorator';
+import { Public } from '../auth/decorators/public.decorator';
 
 @ApiTags('Management')
 @Controller('management')
 export class ManagementController {
   constructor(private readonly managementService: ManagementService) {}
 
+  @Public()
   @Get('/')
   @ApiOperation({ summary: 'Method: returns all managements' })
   @ApiOkResponse({
@@ -39,6 +41,7 @@ export class ManagementController {
     return await this.managementService.getAll({ ...query, route });
   }
 
+  @Public()
   @Get('/:id')
   @ApiOperation({ summary: 'Method: returns single management by id' })
   @ApiOkResponse({

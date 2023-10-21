@@ -23,12 +23,14 @@ import { Gallery } from './gallery.entity';
 import { GalleryService } from './gallery.service';
 import { PaginationDto } from '../../infra/shared/dto';
 import { Route } from '../../infra/shared/decorators/route.decorator';
+import { Public } from '../auth/decorators/public.decorator';
 
 @ApiTags('Gallery')
 @Controller('gallery')
 export class GalleryController {
   constructor(private readonly galleryService: GalleryService) {}
 
+  @Public()
   @Get('/')
   @ApiOperation({ summary: 'Method: returns all galleries' })
   @ApiOkResponse({
@@ -39,6 +41,7 @@ export class GalleryController {
     return await this.galleryService.getAll({ ...query, route });
   }
 
+  @Public()
   @Get('/:id')
   @ApiOperation({ summary: 'Method: returns single gallery by id' })
   @ApiOkResponse({

@@ -23,12 +23,14 @@ import { Document } from './document.entity';
 import { DocumentService } from './document.service';
 import { PaginationDto } from '../../infra/shared/dto';
 import { Route } from '../../infra/shared/decorators/route.decorator';
+import { Public } from '../auth/decorators/public.decorator';
 
 @ApiTags('Document')
 @Controller('document')
 export class DocumentController {
   constructor(private readonly documentService: DocumentService) {}
 
+  @Public()
   @Get('/')
   @ApiOperation({ summary: 'Method: returns all documents' })
   @ApiOkResponse({
@@ -39,6 +41,7 @@ export class DocumentController {
     return await this.documentService.getAll({ ...query, route });
   }
 
+  @Public()
   @Get('/:id')
   @ApiOperation({ summary: 'Method: returns single document by id' })
   @ApiOkResponse({

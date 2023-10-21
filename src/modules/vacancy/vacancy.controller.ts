@@ -23,12 +23,14 @@ import { Vacancy } from './vacancy.entity';
 import { VacancyService } from './vacancy.service';
 import { PaginationDto } from '../../infra/shared/dto';
 import { Route } from '../../infra/shared/decorators/route.decorator';
+import { Public } from '../auth/decorators/public.decorator';
 
 @ApiTags('Vacancy')
 @Controller('vacancy')
 export class VacancyController {
   constructor(private readonly vacancyService: VacancyService) {}
 
+  @Public()
   @Get('/')
   @ApiOperation({ summary: 'Method: returns all vacancies' })
   @ApiOkResponse({
@@ -39,6 +41,7 @@ export class VacancyController {
     return await this.vacancyService.getAll({ ...query, route });
   }
 
+  @Public()
   @Get('/:id')
   @ApiOperation({ summary: 'Method: returns single vacancy by id' })
   @ApiOkResponse({

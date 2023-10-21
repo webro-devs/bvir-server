@@ -1,15 +1,21 @@
-import { IsNotEmpty, IsString, IsOptional, IsNumber } from 'class-validator';
+import { IsNotEmpty, IsString, } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
-import { UserRoleType } from '../../../infra/shared/type'
 class CreateUserDto {
   @ApiProperty({
-    description: `role`,
-    example: 1,
+    description: `login`,
+    example: "admin",
   })
   @IsNotEmpty()
-  @IsNumber()
-  readonly role: UserRoleType;
+  @IsString()
+  readonly login: string;
 
+  @ApiProperty({
+    description: `password`,
+    example: "12345",
+  })
+  @IsNotEmpty()
+  @IsString()
+  readonly password: string;
 }
 
 export default CreateUserDto;

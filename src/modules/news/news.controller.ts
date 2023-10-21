@@ -23,12 +23,14 @@ import { News } from './news.entity';
 import { NewsService } from './news.service';
 import { PaginationDto } from '../../infra/shared/dto';
 import { Route } from '../../infra/shared/decorators/route.decorator';
+import { Public } from '../auth/decorators/public.decorator';
 
 @ApiTags('News')
 @Controller('news')
 export class NewsController {
   constructor(private readonly newsService: NewsService) {}
 
+  @Public()
   @Get('/')
   @ApiOperation({ summary: 'Method: returns all news' })
   @ApiOkResponse({
@@ -39,6 +41,7 @@ export class NewsController {
     return await this.newsService.getAll({ ...query, route });
   }
 
+  @Public()
   @Get('/:id')
   @ApiOperation({ summary: 'Method: returns single news by id' })
   @ApiOkResponse({
