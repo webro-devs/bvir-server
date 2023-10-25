@@ -11,6 +11,7 @@ import { VacancyModule } from './modules/vacancy/vacancy.module';
 import { ManagementModule } from './modules/management/management.module';
 import { InteractiveServiceModule } from './modules/interactive-service/interactive-service.module';
 import { GalleryModule } from './modules/gallery/gallery.module';
+import { CompanyModule } from './modules/company/company.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { GalleryModule } from './modules/gallery/gallery.module';
       inject: [ConfigService],
     }),
     AuthModule,
+    CompanyModule,
     DocumentModule,
     GalleryModule,
     InteractiveServiceModule,
