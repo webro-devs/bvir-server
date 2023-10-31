@@ -25,8 +25,12 @@ export class LanguageService {
     return response;
   }
 
-  async create(value: CreateLanguageDto) {
-    const data = this.languageRepository.create(value);
-    return await this.languageRepository.save(data);
+  async create(value: any[]) {
+    const data = this.languageRepository.createQueryBuilder()
+    .insert()
+    .into(Language)
+    .values(value as unknown as Language)
+    .execute()
+    return  data
   }
 }

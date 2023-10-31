@@ -1,24 +1,23 @@
 import { IsNotEmpty, IsObject, IsString } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 import { CreateLanguageDto } from 'src/modules/language/dto';
-import { InformationTypeEnum } from 'src/infra/shared/enum';
-import { InformationType } from 'src/infra/shared/type';
-class CreateInformationDto {
+class CreateAgencyDto {
   @ApiProperty({
     description: `url`,
-    example: 'News url',
+    example: 'Agency image url',
   })
   @IsNotEmpty()
   @IsString()
-  url: string;
+  readonly url: string;
 
   @ApiProperty({
-    description: `type`,
-    example: InformationTypeEnum.NEWS,
+    description: `link`,
+    example: 'video link',
   })
   @IsNotEmpty()
   @IsString()
-  readonly type: InformationType;
+  readonly link: string;
+
 
   @ApiProperty({
     description: `title`,
@@ -45,4 +44,4 @@ class CreateInformationDto {
   readonly description: CreateLanguageDto;
 }
 
-export default CreateInformationDto;
+export default CreateAgencyDto;

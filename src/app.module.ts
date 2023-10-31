@@ -5,13 +5,13 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import configuration from '../config';
 import { AuthModule } from './modules/auth/auth.module';
 import { UserModule } from './modules/user/user.module';
-import { NewsModule } from './modules/information/information.module';
+import { InformationModule } from './modules/information/information.module';
 import { DocumentModule } from './modules/document/document.module';
 import { VacancyModule } from './modules/vacancy/vacancy.module';
 import { ManagementModule } from './modules/management/management.module';
 import { InteractiveServiceModule } from './modules/interactive-service/interactive-service.module';
 import { GalleryModule } from './modules/gallery/gallery.module';
-import { CompanyModule } from './modules/company/company.module';
+import { AgencyModule } from './modules/agency/agency.module';
 
 @Module({
   imports: [
@@ -27,12 +27,12 @@ import { CompanyModule } from './modules/company/company.module';
       inject: [ConfigService],
     }),
     AuthModule,
-    CompanyModule,
+    AgencyModule,
     DocumentModule,
     GalleryModule,
     InteractiveServiceModule,
     ManagementModule,
-    NewsModule,
+    InformationModule,
     UserModule,
     VacancyModule,
   ],

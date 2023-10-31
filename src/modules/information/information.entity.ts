@@ -1,9 +1,14 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { InformationType } from 'src/infra/shared/type';
+import { Column, Entity, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Language } from '../language/language.entity';
 
-@Entity('news')
-export class News {
+@Entity('information')
+export class Information {
   @PrimaryGeneratedColumn('uuid')
   id: string;
+
+  @Column({ type: 'text' })
+  type: InformationType;
 
   @Column({ type: 'text' })
   url: string;
@@ -11,9 +16,9 @@ export class News {
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   date: string;
 
-  @Column({ type: 'text' })
-  title: string;
+  @OneToOne(()=>Language, lang=>lang.informationTitle)
+  title: Language;
 
-  @Column({ type: 'text' })
-  description: string;
+  @OneToOne(()=>Language, lang=>lang.informationDescription)
+  description: Language;
 }

@@ -6,32 +6,40 @@ import {
   paginate,
 } from 'nestjs-typeorm-paginate';
 
-import { UpdateNewsDto, CreateNewsDto } from './dto';
-import { News } from './information.entity';
+import { UpdateInformationDto, CreateInformationDto } from './dto';
+import { Information } from './information.entity';
 import { InjectRepository } from '@nestjs/typeorm';
+import { LanguageService } from '../language/language.service';
+import { InformationTypeEnum } from 'src/infra/shared/enum';
 
 @Injectable()
-export class NewsService {
+export class InformationService {
   constructor(
-    @InjectRepository(News)
-    private readonly newsRepository: Repository<News>,
+    @InjectRepository(Information)
+    private readonly informationRepository: Repository<Information>,
+    private readonly languageService:LanguageService
   ) {}
 
   async getAll(
     options: IPaginationOptions,
-    where?: FindOptionsWhere<News>,
-  ): Promise<Pagination<News>> {
-    return paginate<News>(this.newsRepository, options, {
-      order: {
-        title: 'ASC',
-      },
+    where?: FindOptionsWhere<Information>,
+  ): Promise<Pagination<Information>> {
+    return paginate<Information>(this.informationRepository, options, {
+      relations:{
+        description:true,
+        title:true
+      }
     });
   }
 
   async getOne(id: string) {
-    const data = await this.newsRepository
+    const data = await this.informationRepository
       .findOne({
         where: { id },
+        relations:{
+          description:true,
+          title:true
+        }
       })
       .catch(() => {
         throw new NotFoundException('data not found');
@@ -40,20 +48,112 @@ export class NewsService {
     return data;
   }
 
+  async getNews(
+    options: IPaginationOptions,
+  ): Promise<Pagination<Information>> {    
+    return paginate<Information>(this.informationRepository, options, {
+      relations:{
+        description:true,
+        title:true
+      },
+      where:{
+        type:InformationTypeEnum.NEWS
+      }
+    });
+  }
+
+  async getBreakingNews(
+    options: IPaginationOptions,
+  ): Promise<Pagination<Information>> {
+    return paginate<Information>(this.informationRepository, options, {
+      relations:{
+        description:true,
+        title:true
+      },
+      where:{
+        type:InformationTypeEnum.BREAKING_NEWS
+      }
+    });
+  }
+
+  async getEvents(
+    options: IPaginationOptions,
+  ): Promise<Pagination<Information>> {
+    return paginate<Information>(this.informationRepository, options, {
+      relations:{
+        description:true,
+        title:true
+      },
+      where:{
+        type:InformationTypeEnum.EVENT
+      }
+    });
+  }
+
+  async getAnnouncement(
+    options: IPaginationOptions,
+  ): Promise<Pagination<Information>> {
+    return paginate<Information>(this.informationRepository, options, {
+      relations:{
+        description:true,
+        title:true
+      },
+      where:{
+        type:InformationTypeEnum.ANNOUNCEMENT
+      }
+    });
+  }
+
+  async getAdditionalPage(
+    options: IPaginationOptions,
+  ): Promise<Pagination<Information>> {
+    return paginate<Information>(this.informationRepository, options, {
+      relations:{
+        description:true,
+        title:true
+      },
+      where:{
+        type:InformationTypeEnum.ADDITIONAL_PAGE
+      }
+    });
+  }
+
   async deleteOne(id: string) {
-    const response = await this.newsRepository.delete(id).catch(() => {
+    const response = await this.informationRepository.delete(id).catch(() => {
       throw new NotFoundException('data not found');
     });
     return response;
   }
 
-  async change(value: UpdateNewsDto, id: string) {
-    const response = await this.newsRepository.update({ id }, value);
-    return response;
+  async change(value: UpdateInformationDto, id: string) {
+    if(value.description){
+     await this.languageService.change(value.description,value.description.id)
+    }
+    if(value.title){
+     await this.languageService.change(value.title,value.title.id)
+    }
+    if(value.type || value.url){
+      const data:any = {}
+      value.type ? data.type = value.type : null
+      value.url ? data.url = value.url : null
+      return await this.informationRepository.update(id,data)
+    }else{
+      return "updated"
+    }
   }
 
-  async create(value: CreateNewsDto) {
-    const data = this.newsRepository.create(value);
-    return await this.newsRepository.save(data);
+  async create(value: CreateInformationDto) {
+    const newInfo = new Information()
+    newInfo.url = value.url
+    newInfo.type = value.type
+    
+    await this.informationRepository.save(newInfo)
+
+    await this.languageService.create([
+      {...value.description,informationDescription:newInfo.id},
+      {...value.title,informationTitle:newInfo.id},
+    ])
+    
+    return await this.getOne(newInfo.id)
   }
 }

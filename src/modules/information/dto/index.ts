@@ -1,2 +1,2 @@
-export { default as CreateNewsDto } from './create-information.dto';
-export { default as UpdateNewsDto } from './update-information.dto';
+export { default as CreateInformationDto } from './create-information.dto';
+export { default as UpdateInformationDto } from './update-information.dto';

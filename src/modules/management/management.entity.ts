@@ -9,13 +9,13 @@ export class Management {
   type: string;
 
   @Column({ type: 'text' })
+  name: string;
+
+  @Column({ type: 'text' })
   avatar: string;
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   date: string;
-
-  @Column({ type: 'text' })
-  name: string;
 
   @Column({ type: 'text' })
   position: string;

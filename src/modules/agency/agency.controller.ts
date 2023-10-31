@@ -19,69 +19,69 @@ import {
 } from '@nestjs/swagger';
 
 import { CreateCompanyDto, UpdateCompanyDto } from './dto';
-import { Company } from './company.entity';
-import { CompanyService } from './company.service';
+import { Agency } from './agency.entity';
+import { AgencyService } from './agency.service';
 import { PaginationDto } from '../../infra/shared/dto';
 import { Route } from '../../infra/shared/decorators/route.decorator';
 import { Public } from '../auth/decorators/public.decorator';
 
-@ApiTags('Company')
-@Controller('company')
-export class CompanyController {
-  constructor(private readonly documentService: CompanyService) {}
+@ApiTags('Agency')
+@Controller('agency')
+export class AgencyController {
+  constructor(private readonly agencyService: AgencyService) {}
 
   @Public()
   @Get('/')
-  @ApiOperation({ summary: 'Method: returns all companies' })
+  @ApiOperation({ summary: 'Method: returns all agency' })
   @ApiOkResponse({
     description: 'The companies were returned successfully',
   })
   @HttpCode(HttpStatus.OK)
   async getData(@Route() route: string, @Query() query: PaginationDto) {
-    return await this.documentService.getAll({ ...query, route });
+    return await this.agencyService.getAll({ ...query, route });
   }
 
   @Public()
   @Get('/:id')
-  @ApiOperation({ summary: 'Method: returns single company by id' })
+  @ApiOperation({ summary: 'Method: returns single agency by id' })
   @ApiOkResponse({
-    description: 'The company was returned successfully',
+    description: 'The agency was returned successfully',
   })
   @HttpCode(HttpStatus.OK)
-  async getMe(@Param('id') id: string): Promise<Company> {
-    return this.documentService.getOne(id);
+  async getMe(@Param('id') id: string): Promise<Agency> {
+    return this.agencyService.getOne(id);
   }
 
   @Post('/')
-  @ApiOperation({ summary: 'Method: creates new company' })
+  @ApiOperation({ summary: 'Method: creates new agency' })
   @ApiCreatedResponse({
-    description: 'The company was created successfully',
+    description: 'The agency was created successfully',
   })
   @HttpCode(HttpStatus.CREATED)
-  async saveData(@Body() data: CreateCompanyDto): Promise<Company> {
-    return await this.documentService.create(data);
+  async saveData(@Body() data: CreateCompanyDto): Promise<Agency> {
+    return await this.agencyService.create(data);
   }
 
   @Patch('/:id')
-  @ApiOperation({ summary: 'Method: updating company' })
+  @ApiOperation({ summary: 'Method: updating agency' })
   @ApiOkResponse({
-    description: 'Company was changed',
+    description: 'Agency was changed',
   })
   @HttpCode(HttpStatus.OK)
   async changeData(
     @Body() data: UpdateCompanyDto,
     @Param('id') id: string,
-  ): Promise<UpdateResult> {
-    return await this.documentService.change(data, id);
+  ){
+    return await this.agencyService.change(data, id);
   }
 
   @Delete('/:id')
-  @ApiOperation({ summary: 'Method: deleting company' })
+  @ApiOperation({ summary: 'Method: deleting agency' })
   @ApiOkResponse({
-    description: 'Company was deleted',
+    description: 'Agency was deleted',
   })
   @HttpCode(HttpStatus.NO_CONTENT)
   async deleteData(@Param('id') id: string) {
-    return await this.documentService.deleteOne(id);
+    return await this.agencyService.deleteOne(id);
   }
 }

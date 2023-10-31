@@ -10,7 +10,6 @@ import {
   Get,
   Query,
 } from '@nestjs/common';
-import { UpdateResult } from 'typeorm';
 import {
   ApiCreatedResponse,
   ApiOkResponse,
@@ -18,70 +17,125 @@ import {
   ApiOperation,
 } from '@nestjs/swagger';
 
-import { CreateNewsDto, UpdateNewsDto } from './dto';
-import { News } from './information.entity';
-import { NewsService } from './information.service';
+import { CreateInformationDto, UpdateInformationDto } from './dto';
+import { Information } from './information.entity';
+import { InformationService } from './information.service';
 import { PaginationDto } from '../../infra/shared/dto';
 import { Route } from '../../infra/shared/decorators/route.decorator';
 import { Public } from '../auth/decorators/public.decorator';
 
-@ApiTags('News')
-@Controller('news')
-export class NewsController {
-  constructor(private readonly newsService: NewsService) {}
+@ApiTags('Information')
+@Controller('information')
+export class InformationController {
+  constructor(private readonly informationService: InformationService) {}
 
   @Public()
   @Get('/')
-  @ApiOperation({ summary: 'Method: returns all news' })
+  @ApiOperation({ summary: 'Method: returns all information' })
   @ApiOkResponse({
-    description: 'The news were returned successfully',
+    description: 'The inormation were returned successfully',
   })
   @HttpCode(HttpStatus.OK)
   async getData(@Route() route: string, @Query() query: PaginationDto) {
-    return await this.newsService.getAll({ ...query, route });
+    return await this.informationService.getAll({ ...query, route });
   }
 
   @Public()
-  @Get('/:id')
-  @ApiOperation({ summary: 'Method: returns single news by id' })
+  @Get('/news')
+  @ApiOperation({ summary: 'Method: returns news' })
   @ApiOkResponse({
     description: 'The news was returned successfully',
   })
   @HttpCode(HttpStatus.OK)
-  async getMe(@Param('id') id: string): Promise<News> {
-    return this.newsService.getOne(id);
+  async getNews(@Route() route: string, @Query() query: PaginationDto){
+    return await this.informationService.getNews({ ...query, route });
+  }
+
+  @Public()
+  @Get('/breaking-news')
+  @ApiOperation({ summary: 'Method: returns breaking-news' })
+  @ApiOkResponse({
+    description: 'The breaking-news was returned successfully',
+  })
+  @HttpCode(HttpStatus.OK)
+  async getBreakingNews(@Route() route: string, @Query() query: PaginationDto){
+    return await this.informationService.getBreakingNews({ ...query, route });
+  }
+
+  @Public()
+  @Get('/events')
+  @ApiOperation({ summary: 'Method: returns events' })
+  @ApiOkResponse({
+    description: 'The events was returned successfully',
+  })
+  @HttpCode(HttpStatus.OK)
+  async getEvents(@Route() route: string, @Query() query: PaginationDto){
+    return await this.informationService.getEvents({ ...query, route });
+  }
+
+  @Public()
+  @Get('/announcements')
+  @ApiOperation({ summary: 'Method: returns announcements' })
+  @ApiOkResponse({
+    description: 'The announcements was returned successfully',
+  })
+  @HttpCode(HttpStatus.OK)
+  async getAnnouncements(@Route() route: string, @Query() query: PaginationDto){
+    return await this.informationService.getAnnouncement({ ...query, route });
+  }
+
+  @Public()
+  @Get('/additional-pages')
+  @ApiOperation({ summary: 'Method: returns additional-pages' })
+  @ApiOkResponse({
+    description: 'The additional-pages was returned successfully',
+  })
+  @HttpCode(HttpStatus.OK)
+  async getAdditionalPages(@Route() route: string, @Query() query: PaginationDto){
+    return await this.informationService.getAdditionalPage({ ...query, route });
+  }
+
+  @Public()
+  @Get('/:id')
+  @ApiOperation({ summary: 'Method: returns single information by id' })
+  @ApiOkResponse({
+    description: 'The information was returned successfully',
+  })
+  @HttpCode(HttpStatus.OK)
+  async getMe(@Param('id') id: string): Promise<Information> {
+    return await this.informationService.getOne(id);
   }
 
   @Post('/')
-  @ApiOperation({ summary: 'Method: creates new news' })
+  @ApiOperation({ summary: 'Method: creates new information' })
   @ApiCreatedResponse({
-    description: 'The news was created successfully',
+    description: 'The information was created successfully',
   })
   @HttpCode(HttpStatus.CREATED)
-  async saveData(@Body() data: CreateNewsDto): Promise<News> {
-    return await this.newsService.create(data);
+  async saveData(@Body() data: CreateInformationDto): Promise<Information> {
+    return await this.informationService.create(data);
   }
 
   @Patch('/:id')
-  @ApiOperation({ summary: 'Method: updating news' })
+  @ApiOperation({ summary: 'Method: updating information' })
   @ApiOkResponse({
-    description: 'News was changed',
+    description: 'Information was changed',
   })
   @HttpCode(HttpStatus.OK)
   async changeData(
-    @Body() data: UpdateNewsDto,
+    @Body() data: UpdateInformationDto,
     @Param('id') id: string,
-  ): Promise<UpdateResult> {
-    return await this.newsService.change(data, id);
+  ){
+    return await this.informationService.change(data, id);
   }
 
   @Delete('/:id')
-  @ApiOperation({ summary: 'Method: deleting news' })
+  @ApiOperation({ summary: 'Method: deleting information' })
   @ApiOkResponse({
-    description: 'News was deleted',
+    description: 'Information was deleted',
   })
   @HttpCode(HttpStatus.NO_CONTENT)
   async deleteData(@Param('id') id: string) {
-    return await this.newsService.deleteOne(id);
+    return await this.informationService.deleteOne(id);
   }
 }
