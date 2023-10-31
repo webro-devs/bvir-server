@@ -7,7 +7,7 @@ import {
 } from 'nestjs-typeorm-paginate';
 
 import { UpdateNewsDto, CreateNewsDto } from './dto';
-import { News } from './news.entity';
+import { News } from './information.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()

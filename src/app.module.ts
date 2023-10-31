@@ -5,7 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import configuration from '../config';
 import { AuthModule } from './modules/auth/auth.module';
 import { UserModule } from './modules/user/user.module';
-import { NewsModule } from './modules/news/news.module';
+import { NewsModule } from './modules/information/information.module';
 import { DocumentModule } from './modules/document/document.module';
 import { VacancyModule } from './modules/vacancy/vacancy.module';
 import { ManagementModule } from './modules/management/management.module';

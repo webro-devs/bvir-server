@@ -19,8 +19,8 @@ import {
 } from '@nestjs/swagger';
 
 import { CreateNewsDto, UpdateNewsDto } from './dto';
-import { News } from './news.entity';
-import { NewsService } from './news.service';
+import { News } from './information.entity';
+import { NewsService } from './information.service';
 import { PaginationDto } from '../../infra/shared/dto';
 import { Route } from '../../infra/shared/decorators/route.decorator';
 import { Public } from '../auth/decorators/public.decorator';
