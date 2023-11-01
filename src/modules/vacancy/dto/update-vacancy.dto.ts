@@ -1,60 +1,76 @@
 import { IsString, IsOptional } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
-class UpdateDocumentDto {
+class UpdateVacancyDto {
   @ApiProperty({
-    description: `title`,
-    example: 'Vacancy title',
+    description: `titleUz`,
+    example: "",
   })
   @IsOptional()
   @IsString()
-  readonly title: string;
+  readonly titleUz: string;
 
   @ApiProperty({
-    description: `price`,
-    example: '2000',
+    description: `titleRu`,
+    example: "",
   })
   @IsOptional()
   @IsString()
-  readonly price: string;
+  readonly titleRu: string;
 
   @ApiProperty({
-    description: `date`,
-    example: '2023-10-23',
+    description: `titleEn`,
+    example: "",
   })
   @IsOptional()
   @IsString()
-  readonly date: string;
+  readonly titleEn: string;
 
   @ApiProperty({
-    description: `start time`,
-    example: '9:00',
+    description: `descriptionUz`,
+    example: "",
   })
   @IsOptional()
   @IsString()
-  readonly startTime: string;
+  readonly descriptionUz: string;
 
   @ApiProperty({
-    description: `end time`,
-    example: '18:00',
+    description: `descriptionRu`,
+    example: "",
   })
   @IsOptional()
   @IsString()
-  readonly endTime: string;
+  readonly descriptionRu: string;
 
   @ApiProperty({
-    description: `address`,
-    example: 'Uol street',
+    description: `descriptionEn`,
+    example: "",
   })
   @IsOptional()
   @IsString()
-  readonly address: string;
+  readonly descriptionEn: string;
 
   @ApiProperty({
-    description: `description`,
-    example: 'Vacancy description',
+    description: `salaryUz`,
+    example: "",
   })
   @IsOptional()
   @IsString()
-  readonly description: string;
+  readonly salaryUz: string;
+
+  @ApiProperty({
+    description: `salaryRu`,
+    example: "",
+  })
+  @IsOptional()
+  @IsString()
+  readonly salaryRu: string;
+
+  @ApiProperty({
+    description: `salaryEn`,
+    example: "",
+  })
+  @IsOptional()
+  @IsString()
+  readonly salaryEn: string;
 }
-export default UpdateDocumentDto;
+export default UpdateVacancyDto;

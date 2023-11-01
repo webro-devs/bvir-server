@@ -21,11 +21,7 @@ export class VacancyService {
     options: IPaginationOptions,
     where?: FindOptionsWhere<Vacancy>,
   ): Promise<Pagination<Vacancy>> {
-    return paginate<Vacancy>(this.vacancyRepository, options, {
-      order: {
-        title: 'ASC',
-      },
-    });
+    return paginate<Vacancy>(this.vacancyRepository, options, {});
   }
 
   async getOne(id: string) {

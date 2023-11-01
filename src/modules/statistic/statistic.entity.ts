@@ -1,16 +1,13 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity('agency')
-export class Agency {
+@Entity('statistic')
+export class Statistic {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column({ type: 'text' })
-  url: string;
-
-  @Column({ type: 'text' })
   link: string;
-  
+
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   date: string;
 
@@ -22,13 +19,4 @@ export class Agency {
 
   @Column({ type: 'text',nullable:true })
   titleEn: string;
-
-  @Column({ type: 'text' })
-  descriptionUz: string;
-
-  @Column({ type: 'text',nullable:true })
-  descriptionRu: string;
-
-  @Column({ type: 'text',nullable:true })
-  descriptionEn: string;
 }

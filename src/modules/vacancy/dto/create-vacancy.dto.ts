@@ -2,60 +2,76 @@ import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 class CreateVacancyDto {
   @ApiProperty({
-    description: `title`,
-    example: 'Vacancy title',
+    description: `titleUz`,
+    example: "",
   })
   @IsNotEmpty()
   @IsString()
-  readonly title: string;
+  readonly titleUz: string;
 
   @ApiProperty({
-    description: `price`,
-    example: '2000',
-  })
-  @IsNotEmpty()
-  @IsString()
-  readonly price: string;
-
-  @ApiProperty({
-    description: `date`,
-    example: '2023-10-23',
+    description: `titleRu`,
+    example: "",
   })
   @IsOptional()
   @IsString()
-  readonly date: string;
+  readonly titleRu: string;
 
   @ApiProperty({
-    description: `start time`,
-    example: '9:00',
+    description: `titleEn`,
+    example: "",
+  })
+  @IsOptional()
+  @IsString()
+  readonly titleEn: string;
+
+  @ApiProperty({
+    description: `descriptionUz`,
+    example: "",
   })
   @IsNotEmpty()
   @IsString()
-  readonly startTime: string;
+  readonly descriptionUz: string;
 
   @ApiProperty({
-    description: `end time`,
-    example: '18:00',
+    description: `descriptionRu`,
+    example: "",
+  })
+  @IsOptional()
+  @IsString()
+  readonly descriptionRu: string;
+
+  @ApiProperty({
+    description: `descriptionEn`,
+    example: "",
+  })
+  @IsOptional()
+  @IsString()
+  readonly descriptionEn: string;
+
+  @ApiProperty({
+    description: `salaryUz`,
+    example: "",
   })
   @IsNotEmpty()
   @IsString()
-  readonly endTime: string;
+  readonly salaryUz: string;
 
   @ApiProperty({
-    description: `address`,
-    example: 'Uol street',
+    description: `salaryRu`,
+    example: "",
   })
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
-  readonly address: string;
+  readonly salaryRu: string;
 
   @ApiProperty({
-    description: `description`,
-    example: 'Vacancy description',
+    description: `salaryEn`,
+    example: "",
   })
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
-  readonly description: string;
+  readonly salaryEn: string;
 }
 
 export default CreateVacancyDto;

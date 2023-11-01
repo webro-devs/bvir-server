@@ -14,6 +14,8 @@ import { GalleryModule } from './modules/gallery/gallery.module';
 import { AgencyModule } from './modules/agency/agency.module';
 import { BannerModule } from './modules/banner/banner.module';
 import { CommunicationToolModule } from './modules/communication-tool/communication-tool.module';
+import { StatisticModule } from './modules/statistic/statistic.module';
+import { UsefulLinkModule } from './modules/useful-link/useful-link.module';
 
 @Module({
   imports: [
@@ -37,6 +39,8 @@ import { CommunicationToolModule } from './modules/communication-tool/communicat
     InteractiveServiceModule,
     ManagementModule,
     InformationModule,
+    StatisticModule,
+    UsefulLinkModule,
     UserModule,
     VacancyModule,
   ],
