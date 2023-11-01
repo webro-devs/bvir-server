@@ -17,6 +17,7 @@ import { CommunicationToolModule } from './modules/communication-tool/communicat
 import { StatisticModule } from './modules/statistic/statistic.module';
 import { UsefulLinkModule } from './modules/useful-link/useful-link.module';
 import { TerritorialDivisionModule } from './modules/territorial-division/territorial-division.module';
+import { TerritorialManagementModule } from './modules/territorial-management/territorial-management.module';
 
 @Module({
   imports: [
@@ -42,6 +43,7 @@ import { TerritorialDivisionModule } from './modules/territorial-division/territ
     InformationModule,
     StatisticModule,
     TerritorialDivisionModule,
+    TerritorialManagementModule,
     UsefulLinkModule,
     UserModule,
     VacancyModule,

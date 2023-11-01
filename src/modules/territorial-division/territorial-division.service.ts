@@ -21,6 +21,9 @@ export class TerritorialDivisionService {
     const data = await this.territorialDivisionRepository
       .findOne({
         where: { id },
+        relations:{
+          territorialManagements:true
+        }
       })
       .catch(() => {
         throw new NotFoundException('data not found');

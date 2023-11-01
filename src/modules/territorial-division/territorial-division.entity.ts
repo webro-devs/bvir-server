@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { TerritorialManagement } from '../territorial-management/territorial-management.entity';
 
 @Entity('territorial_division')
 export class TerritorialDivision {
@@ -46,4 +47,7 @@ export class TerritorialDivision {
 
   @Column({type:"text", nullable:true})
   titleEn: string;
+
+  @OneToMany(()=>TerritorialManagement, tr=>tr.territorialDivision)
+  territorialManagements:TerritorialManagement[]
 }
