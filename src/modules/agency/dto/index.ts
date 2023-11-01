@@ -1,2 +1,2 @@
-export { default as CreateCompanyDto } from './create-agency.dto';
-export { default as UpdateCompanyDto } from './update-agency.dto';
+export { default as CreateAgencyDto } from './create-agency.dto';
+export { default as UpdateAgencyDto } from './update-agency.dto';

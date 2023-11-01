@@ -13,6 +13,7 @@ import { InteractiveServiceModule } from './modules/interactive-service/interact
 import { GalleryModule } from './modules/gallery/gallery.module';
 import { AgencyModule } from './modules/agency/agency.module';
 import { BannerModule } from './modules/banner/banner.module';
+import { CommunicationToolModule } from './modules/communication-tool/communication-tool.module';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { BannerModule } from './modules/banner/banner.module';
     AuthModule,
     AgencyModule,
     BannerModule,
+    CommunicationToolModule,
     DocumentModule,
     GalleryModule,
     InteractiveServiceModule,

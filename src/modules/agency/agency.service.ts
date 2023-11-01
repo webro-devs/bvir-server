@@ -6,7 +6,7 @@ import {
   paginate,
 } from 'nestjs-typeorm-paginate';
 
-import { UpdateCompanyDto, CreateCompanyDto } from './dto';
+import { UpdateAgencyDto, CreateAgencyDto } from './dto';
 import { Agency } from './agency.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 
@@ -43,12 +43,12 @@ export class AgencyService {
     return response;
   }
 
-  async change(value: UpdateCompanyDto, id: string) {
+  async change(value: UpdateAgencyDto, id: string) {
     const data = await this.agencyRepository.update(id,value)
     return data
   }
 
-  async create(value: CreateCompanyDto) {
+  async create(value: CreateAgencyDto) {
     const data = this.agencyRepository.create(value)
     return await this.agencyRepository.save(data)
   }

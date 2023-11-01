@@ -17,7 +17,7 @@ import {
   ApiOperation,
 } from '@nestjs/swagger';
 
-import { CreateCompanyDto, UpdateCompanyDto } from './dto';
+import { CreateAgencyDto, UpdateAgencyDto } from './dto';
 import { Agency } from './agency.entity';
 import { AgencyService } from './agency.service';
 import { PaginationDto } from '../../infra/shared/dto';
@@ -57,7 +57,7 @@ export class AgencyController {
     description: 'The agency was created successfully',
   })
   @HttpCode(HttpStatus.CREATED)
-  async saveData(@Body() data: CreateCompanyDto): Promise<Agency> {
+  async saveData(@Body() data: CreateAgencyDto): Promise<Agency> {
     return await this.agencyService.create(data);
   }
 
@@ -68,7 +68,7 @@ export class AgencyController {
   })
   @HttpCode(HttpStatus.OK)
   async changeData(
-    @Body() data: UpdateCompanyDto,
+    @Body() data: UpdateAgencyDto,
     @Param('id') id: string,
   ){
     return await this.agencyService.change(data, id);
