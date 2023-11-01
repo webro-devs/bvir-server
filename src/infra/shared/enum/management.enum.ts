@@ -1,6 +1,6 @@
 enum ManagementEnum {
-  MINISTRY = 'ministry',
-  AGENCY = 'agency',
+  MANAGEMENT = 'management',
+  CENTRAL_APPARATUS = 'central apparatus',
 }
 
 export default ManagementEnum;

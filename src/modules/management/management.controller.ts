@@ -31,14 +31,25 @@ export class ManagementController {
   constructor(private readonly managementService: ManagementService) {}
 
   @Public()
-  @Get('/')
+  @Get('/management')
   @ApiOperation({ summary: 'Method: returns all managements' })
   @ApiOkResponse({
     description: 'The managements were returned successfully',
   })
   @HttpCode(HttpStatus.OK)
-  async getData(@Route() route: string, @Query() query: PaginationDto) {
-    return await this.managementService.getAll({ ...query, route });
+  async getManagement(@Route() route: string, @Query() query: PaginationDto) {
+    return await this.managementService.getManagement({ ...query, route });
+  }
+
+  @Public()
+  @Get('/central-apparatus')
+  @ApiOperation({ summary: 'Method: returns all central-apparatus' })
+  @ApiOkResponse({
+    description: 'The central-apparatus were returned successfully',
+  })
+  @HttpCode(HttpStatus.OK)
+  async getCentralApparatus(@Route() route: string, @Query() query: PaginationDto) {
+    return await this.managementService.getCentralApparatus({ ...query, route });
   }
 
   @Public()

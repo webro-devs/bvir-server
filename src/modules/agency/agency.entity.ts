@@ -1,5 +1,4 @@
 import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Language } from '../language/language.entity';
 
 @Entity('agency')
 export class Agency {
@@ -15,9 +14,21 @@ export class Agency {
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   date: string;
 
-  @OneToOne(()=>Language, lang=>lang.agencyTitle)
-  title: Language;
+  @Column({ type: 'text' })
+  titleUz: string;
 
-  @OneToOne(()=>Language, lang=>lang.agencyDescription)
-  description: Language;
+  @Column({ type: 'text',nullable:true })
+  titleRu: string;
+
+  @Column({ type: 'text',nullable:true })
+  titleEn: string;
+
+  @Column({ type: 'text' })
+  descriptionUz: string;
+
+  @Column({ type: 'text',nullable:true })
+  descriptionRu: string;
+
+  @Column({ type: 'text',nullable:true })
+  descriptionEn: string;
 }

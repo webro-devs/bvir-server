@@ -1,6 +1,5 @@
 import { InformationType } from 'src/infra/shared/type';
-import { Column, Entity, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Language } from '../language/language.entity';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('information')
 export class Information {
@@ -16,9 +15,21 @@ export class Information {
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   date: string;
 
-  @OneToOne(()=>Language, lang=>lang.informationTitle)
-  title: Language;
+  @Column({ type: 'text' })
+  titleUz: string;
 
-  @OneToOne(()=>Language, lang=>lang.informationDescription)
-  description: Language;
+  @Column({ type: 'text',nullable:true })
+  titleRu: string;
+
+  @Column({ type: 'text',nullable:true })
+  titleEn: string;
+
+  @Column({ type: 'text' })
+  descriptionUz: string;
+
+  @Column({ type: 'text',nullable:true })
+  descriptionRu: string;
+
+  @Column({ type: 'text',nullable:true })
+  descriptionEn: string;
 }

@@ -21,11 +21,7 @@ export class InteractiveServiceService {
     options: IPaginationOptions,
     where?: FindOptionsWhere<InteractiveService>,
   ): Promise<Pagination<InteractiveService>> {
-    return paginate<InteractiveService>(this.interactiveServiceRepository, options, {
-      order: {
-        title: 'ASC',
-      },
-    });
+    return paginate<InteractiveService>(this.interactiveServiceRepository, options, {});
   }
 
   async getOne(id: string) {

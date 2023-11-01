@@ -19,12 +19,28 @@ class CreateGalleryDto {
   url: string;
 
   @ApiProperty({
-    description: `description`,
-    example: 'Gallery description',
+    description: `descriptionUz`,
+    example: "",
   })
   @IsNotEmpty()
   @IsString()
-  description: string;
+  readonly descriptionUz: string;
+
+  @ApiProperty({
+    description: `descriptionRu`,
+    example: "",
+  })
+  @IsOptional()
+  @IsString()
+  readonly descriptionRu: string;
+
+  @ApiProperty({
+    description: `descriptionEn`,
+    example: "",
+  })
+  @IsOptional()
+  @IsString()
+  readonly descriptionEn: string;
 }
 
 export default CreateGalleryDto;

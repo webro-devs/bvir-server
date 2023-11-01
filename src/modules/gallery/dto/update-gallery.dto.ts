@@ -19,11 +19,27 @@ class UpdateGalleryDto {
   url: string;
 
   @ApiProperty({
-    description: `description`,
-    example: 'News description',
+    description: `descriptionUz`,
+    example: "",
   })
   @IsOptional()
   @IsString()
-  description: string;
+  readonly descriptionUz: string;
+
+  @ApiProperty({
+    description: `descriptionRu`,
+    example: "",
+  })
+  @IsOptional()
+  @IsString()
+  readonly descriptionRu: string;
+
+  @ApiProperty({
+    description: `descriptionEn`,
+    example: "",
+  })
+  @IsOptional()
+  @IsString()
+  readonly descriptionEn: string;
 }
 export default UpdateGalleryDto;

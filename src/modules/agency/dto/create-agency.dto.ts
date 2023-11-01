@@ -1,6 +1,5 @@
-import { IsNotEmpty, IsObject, IsString } from 'class-validator';
+import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
-import { CreateLanguageDto } from 'src/modules/language/dto';
 class CreateAgencyDto {
   @ApiProperty({
     description: `url`,
@@ -20,28 +19,52 @@ class CreateAgencyDto {
 
 
   @ApiProperty({
-    description: `title`,
-    example: {
-      uz:"...",
-      ru:"...",
-      en:"..."
-    },
+    description: `titleUz`,
+    example: "",
   })
   @IsNotEmpty()
-  @IsObject()
-  readonly title: CreateLanguageDto;
+  @IsString()
+  readonly titleUz: string;
 
   @ApiProperty({
-    description: `description`,
-    example: {
-      uz:"...",
-      ru:"...",
-      en:"..."
-    },
+    description: `titleRu`,
+    example: "",
+  })
+  @IsOptional()
+  @IsString()
+  readonly titleRu: string;
+
+  @ApiProperty({
+    description: `titleEn`,
+    example: "",
+  })
+  @IsOptional()
+  @IsString()
+  readonly titleEn: string;
+
+  @ApiProperty({
+    description: `descriptionUz`,
+    example: "",
   })
   @IsNotEmpty()
-  @IsObject()
-  readonly description: CreateLanguageDto;
+  @IsString()
+  readonly descriptionUz: string;
+
+  @ApiProperty({
+    description: `descriptionRu`,
+    example: "",
+  })
+  @IsOptional()
+  @IsString()
+  readonly descriptionRu: string;
+
+  @ApiProperty({
+    description: `descriptionEn`,
+    example: "",
+  })
+  @IsOptional()
+  @IsString()
+  readonly descriptionEn: string;
 }
 
 export default CreateAgencyDto;

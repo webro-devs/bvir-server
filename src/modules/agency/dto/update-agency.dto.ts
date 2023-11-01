@@ -1,6 +1,5 @@
-import { IsString, IsOptional, IsObject } from 'class-validator';
+import { IsString, IsOptional } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
-import { Language } from 'src/modules/language/language.entity';
 class UpdateAgencyDto {
   @ApiProperty({
     description: `url`,
@@ -19,29 +18,51 @@ class UpdateAgencyDto {
   link: string;
 
   @ApiProperty({
-    description: `title`,
-    example: {
-      id:"uuid",
-      uz:"...",
-      ru:"...",
-      en:"..."
-    },
+    description: `titleUz`,
+    example: "",
   })
   @IsOptional()
-  @IsObject()
-  readonly title: Language;
+  @IsString()
+  readonly titleUz: string;
 
   @ApiProperty({
-    description: `description`,
-    example: {
-      id:"uuid",
-      uz:"...",
-      ru:"...",
-      en:"..."
-    },
+    description: `titleRu`,
+    example: "",
   })
   @IsOptional()
-  @IsObject()
-  readonly description: Language;
+  @IsString()
+  readonly titleRu: string;
+
+  @ApiProperty({
+    description: `titleEn`,
+    example: "",
+  })
+  @IsOptional()
+  @IsString()
+  readonly titleEn: string;
+
+  @ApiProperty({
+    description: `descriptionUz`,
+    example: "",
+  })
+  @IsOptional()
+  @IsString()
+  readonly descriptionUz: string;
+
+  @ApiProperty({
+    description: `descriptionRu`,
+    example: "",
+  })
+  @IsOptional()
+  @IsString()
+  readonly descriptionRu: string;
+
+  @ApiProperty({
+    description: `descriptionEn`,
+    example: "",
+  })
+  @IsOptional()
+  @IsString()
+  readonly descriptionEn: string;
 }
 export default UpdateAgencyDto;

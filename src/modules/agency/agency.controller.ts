@@ -10,7 +10,6 @@ import {
   Get,
   Query,
 } from '@nestjs/common';
-import { UpdateResult } from 'typeorm';
 import {
   ApiCreatedResponse,
   ApiOkResponse,

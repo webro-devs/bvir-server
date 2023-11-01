@@ -1,22 +1,6 @@
-import { IsNotEmpty,IsString } from 'class-validator';
+import { IsNotEmpty,IsOptional,IsString } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 class CreateInteractiveServiceDto {
-  @ApiProperty({
-    description: `title`,
-    example: 'Online kredit',
-  })
-  @IsNotEmpty()
-  @IsString()
-  readonly title: string;
-
-  @ApiProperty({
-    description: `description`,
-    example: `Agentlikning markaziy apparat hodimlar ma'lumotlari bilan tanishish sahifasi`
-  })
-  @IsNotEmpty()
-  @IsString()
-  readonly description: string;
-
   @ApiProperty({
     description: `url`,
     example: 'https://avatar.png',
@@ -24,6 +8,55 @@ class CreateInteractiveServiceDto {
   @IsNotEmpty()
   @IsString()
   readonly url: string;
+  
+  @ApiProperty({
+    description: `titleUz`,
+    example: "",
+  })
+  @IsNotEmpty()
+  @IsString()
+  readonly titleUz: string;
+
+  @ApiProperty({
+    description: `titleRu`,
+    example: "",
+  })
+  @IsOptional()
+  @IsString()
+  readonly titleRu: string;
+
+  @ApiProperty({
+    description: `titleEn`,
+    example: "",
+  })
+  @IsOptional()
+  @IsString()
+  readonly titleEn: string;
+
+  @ApiProperty({
+    description: `descriptionUz`,
+    example: "",
+  })
+  @IsNotEmpty()
+  @IsString()
+  readonly descriptionUz: string;
+
+  @ApiProperty({
+    description: `descriptionRu`,
+    example: "",
+  })
+  @IsOptional()
+  @IsString()
+  readonly descriptionRu: string;
+
+  @ApiProperty({
+    description: `descriptionEn`,
+    example: "",
+  })
+  @IsOptional()
+  @IsString()
+  readonly descriptionEn: string;
 }
+
 
 export default CreateInteractiveServiceDto;

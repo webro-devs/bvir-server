@@ -21,11 +21,7 @@ export class GalleryService {
     options: IPaginationOptions,
     where?: FindOptionsWhere<Gallery>,
   ): Promise<Pagination<Gallery>> {
-    return paginate<Gallery>(this.galleryRepository, options, {
-      order: {
-        description: 'ASC',
-      },
-    });
+    return paginate<Gallery>(this.galleryRepository, options, {});
   }
 
   async getOne(id: string) {

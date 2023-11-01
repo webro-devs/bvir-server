@@ -1,5 +1,5 @@
 import { GalleryTypeEnum } from 'src/infra/shared/enum';
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('gallery')
 export class Gallery {
@@ -16,5 +16,11 @@ export class Gallery {
   date: string;
 
   @Column({ type: 'text' })
-  description: string;
+  descriptionUz: string;
+
+  @Column({ type: 'text',nullable:true })
+  descriptionRu: string;
+
+  @Column({ type: 'text',nullable:true })
+  descriptionEn: string;
 }
