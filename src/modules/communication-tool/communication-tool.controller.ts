@@ -24,7 +24,7 @@ import { PaginationDto } from '../../infra/shared/dto';
 import { Route } from '../../infra/shared/decorators/route.decorator';
 import { Public } from '../auth/decorators/public.decorator';
 
-@ApiTags('CommunicationTool')
+@ApiTags('Communication-Tool')
 @Controller('communication-tool')
 export class CommunicationToolController {
   constructor(private readonly communicationToolService: CommunicationToolService) {}

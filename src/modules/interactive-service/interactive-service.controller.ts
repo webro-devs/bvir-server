@@ -25,7 +25,7 @@ import { PaginationDto } from '../../infra/shared/dto';
 import { Route } from '../../infra/shared/decorators/route.decorator';
 import { Public } from '../auth/decorators/public.decorator';
 
-@ApiTags('InteractiveService')
+@ApiTags('Interactive-Service')
 @Controller('interactive-service')
 export class InteractiveServiceController {
   constructor(private readonly interactiveServiceServiceService: InteractiveServiceService) {}

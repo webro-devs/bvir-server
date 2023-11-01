@@ -16,6 +16,7 @@ import { BannerModule } from './modules/banner/banner.module';
 import { CommunicationToolModule } from './modules/communication-tool/communication-tool.module';
 import { StatisticModule } from './modules/statistic/statistic.module';
 import { UsefulLinkModule } from './modules/useful-link/useful-link.module';
+import { TerritorialDivisionModule } from './modules/territorial-division/territorial-division.module';
 
 @Module({
   imports: [
@@ -40,6 +41,7 @@ import { UsefulLinkModule } from './modules/useful-link/useful-link.module';
     ManagementModule,
     InformationModule,
     StatisticModule,
+    TerritorialDivisionModule,
     UsefulLinkModule,
     UserModule,
     VacancyModule,
