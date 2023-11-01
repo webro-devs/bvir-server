@@ -32,13 +32,24 @@ export class DocumentController {
 
   @Public()
   @Get('/')
-  @ApiOperation({ summary: 'Method: returns all documents' })
+  @ApiOperation({ summary: 'Method: returns all regulatory documents' })
   @ApiOkResponse({
-    description: 'The documents were returned successfully',
+    description: 'The regulatory documents were returned successfully',
   })
   @HttpCode(HttpStatus.OK)
-  async getData(@Route() route: string, @Query() query: PaginationDto) {
-    return await this.documentService.getAll({ ...query, route });
+  async getRegulatoryDoc(@Route() route: string, @Query() query: PaginationDto) {
+    return await this.documentService.getRegulatoryDocument({ ...query, route });
+  }
+
+  @Public()
+  @Get('/')
+  @ApiOperation({ summary: 'Method: returns all open documents' })
+  @ApiOkResponse({
+    description: 'The open documents were returned successfully',
+  })
+  @HttpCode(HttpStatus.OK)
+  async getOpenDoc(@Route() route: string, @Query() query: PaginationDto) {
+    return await this.documentService.getOpenDocument({ ...query, route });
   }
 
   @Public()

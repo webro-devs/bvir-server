@@ -9,6 +9,7 @@ import {
 import { UpdateDocumentDto, CreateDocumentDto } from './dto';
 import { Document } from './document.entity';
 import { InjectRepository } from '@nestjs/typeorm';
+import { DocumentTypeEnum } from 'src/infra/shared/enum';
 
 @Injectable()
 export class DocumentService {
@@ -19,13 +20,8 @@ export class DocumentService {
 
   async getAll(
     options: IPaginationOptions,
-    where?: FindOptionsWhere<Document>,
   ): Promise<Pagination<Document>> {
-    return paginate<Document>(this.documentRepository, options, {
-      order: {
-        title: 'ASC',
-      },
-    });
+    return paginate<Document>(this.documentRepository, options, {});
   }
 
   async getOne(id: string) {
@@ -38,6 +34,26 @@ export class DocumentService {
       });
 
     return data;
+  }
+
+  async getRegulatoryDocument(
+    options: IPaginationOptions,
+  ): Promise<Pagination<Document>> {
+    return paginate<Document>(this.documentRepository, options, {
+      where:{
+        type:DocumentTypeEnum.REGULATORY
+      }
+    });
+  }
+
+  async getOpenDocument(
+    options: IPaginationOptions,
+  ): Promise<Pagination<Document>> {
+    return paginate<Document>(this.documentRepository, options, {
+      where:{
+        type:DocumentTypeEnum.OPEN
+      }
+    });
   }
 
   async deleteOne(id: string) {

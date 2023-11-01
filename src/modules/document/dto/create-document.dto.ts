@@ -1,21 +1,15 @@
 import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
+import { DocumentType } from 'src/infra/shared/type';
+import { DocumentTypeEnum } from 'src/infra/shared/enum';
 class CreateDocumentDto {
   @ApiProperty({
-    description: `title`,
-    example: 'Document title',
-  })
-  @IsNotEmpty()
-  @IsString()
-  readonly title: string;
-
-  @ApiProperty({
     description: `type`,
-    example: '',
+    example: DocumentTypeEnum.REGULATORY,
   })
   @IsNotEmpty()
   @IsString()
-  type: string;
+  type: DocumentType;
 
   @ApiProperty({
     description: `link`,
@@ -26,20 +20,28 @@ class CreateDocumentDto {
   link: string;
 
   @ApiProperty({
-    description: `date`,
-    example: '2023-10-23',
-  })
-  @IsOptional()
-  @IsString()
-  date: string;
-
-  @ApiProperty({
-    description: `number`,
-    example: 'PPjf15-ll',
+    description: `titleUz`,
+    example: "",
   })
   @IsNotEmpty()
   @IsString()
-  number: string;
+  readonly titleUz: string;
+
+  @ApiProperty({
+    description: `titleRu`,
+    example: "",
+  })
+  @IsOptional()
+  @IsString()
+  readonly titleRu: string;
+
+  @ApiProperty({
+    description: `titleEn`,
+    example: "",
+  })
+  @IsOptional()
+  @IsString()
+  readonly titleEn: string;
 }
 
 export default CreateDocumentDto;

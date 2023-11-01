@@ -1,21 +1,15 @@
 import { IsString, IsOptional } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
+import { DocumentType } from 'src/infra/shared/type';
+import { DocumentTypeEnum } from 'src/infra/shared/enum';
 class UpdateDocumentDto {
   @ApiProperty({
-    description: `title`,
-    example: 'Document title',
-  })
-  @IsOptional()
-  @IsString()
-  readonly title: string;
-
-  @ApiProperty({
     description: `type`,
-    example: '',
+    example: DocumentTypeEnum.REGULATORY,
   })
   @IsOptional()
   @IsString()
-  type: string;
+  type: DocumentType;
 
   @ApiProperty({
     description: `link`,
@@ -26,19 +20,27 @@ class UpdateDocumentDto {
   link: string;
 
   @ApiProperty({
-    description: `date`,
-    example: '2023-10-23',
+    description: `titleUz`,
+    example: "",
   })
   @IsOptional()
   @IsString()
-  date: string;
+  readonly titleUz: string;
 
   @ApiProperty({
-    description: `number`,
-    example: 'PPjf15-ll',
+    description: `titleRu`,
+    example: "",
   })
   @IsOptional()
   @IsString()
-  number: string;
+  readonly titleRu: string;
+
+  @ApiProperty({
+    description: `titleEn`,
+    example: "",
+  })
+  @IsOptional()
+  @IsString()
+  readonly titleEn: string;
 }
 export default UpdateDocumentDto;
