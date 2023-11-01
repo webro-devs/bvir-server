@@ -1,29 +1,29 @@
-import { IsString, IsOptional } from 'class-validator';
+import { IsNotEmpty, IsString, IsOptional } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
-import { InformationType } from 'src/infra/shared/type';
-import { InformationTypeEnum } from 'src/infra/shared/enum';
-class UpdateInformationDto {
+import { BannerTypeEnum } from 'src/infra/shared/enum';
+import { BannerType } from 'src/infra/shared/type';
+class CreateBannnerDto {
   @ApiProperty({
     description: `url`,
-    example: 'information url',
+    example: 'banner url',
   })
-  @IsOptional()
+  @IsNotEmpty()
   @IsString()
   url: string;
 
   @ApiProperty({
     description: `type`,
-    example: InformationTypeEnum.BREAKING_NEWS,
+    example: BannerTypeEnum.LEFT,
   })
-  @IsOptional()
+  @IsNotEmpty()
   @IsString()
-  type: InformationType;
+  readonly type: BannerType;
 
   @ApiProperty({
     description: `titleUz`,
     example: "",
   })
-  @IsOptional()
+  @IsNotEmpty()
   @IsString()
   readonly titleUz: string;
 
@@ -47,7 +47,7 @@ class UpdateInformationDto {
     description: `descriptionUz`,
     example: "",
   })
-  @IsOptional()
+  @IsNotEmpty()
   @IsString()
   readonly descriptionUz: string;
 
@@ -67,4 +67,5 @@ class UpdateInformationDto {
   @IsString()
   readonly descriptionEn: string;
 }
-export default UpdateInformationDto;
+
+export default CreateBannnerDto;

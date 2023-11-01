@@ -1,11 +1,11 @@
 import { IsString, IsOptional } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
-import { InformationType } from 'src/infra/shared/type';
-import { InformationTypeEnum } from 'src/infra/shared/enum';
+import { BannerType, InformationType } from 'src/infra/shared/type';
+import { BannerTypeEnum } from 'src/infra/shared/enum';
 class UpdateInformationDto {
   @ApiProperty({
     description: `url`,
-    example: 'information url',
+    example: 'banner url',
   })
   @IsOptional()
   @IsString()
@@ -13,11 +13,11 @@ class UpdateInformationDto {
 
   @ApiProperty({
     description: `type`,
-    example: InformationTypeEnum.BREAKING_NEWS,
+    example: BannerTypeEnum.RIGHT,
   })
   @IsOptional()
   @IsString()
-  type: InformationType;
+  type: BannerType;
 
   @ApiProperty({
     description: `titleUz`,

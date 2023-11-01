@@ -12,6 +12,7 @@ import { ManagementModule } from './modules/management/management.module';
 import { InteractiveServiceModule } from './modules/interactive-service/interactive-service.module';
 import { GalleryModule } from './modules/gallery/gallery.module';
 import { AgencyModule } from './modules/agency/agency.module';
+import { BannerModule } from './modules/banner/banner.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { AgencyModule } from './modules/agency/agency.module';
     }),
     AuthModule,
     AgencyModule,
+    BannerModule,
     DocumentModule,
     GalleryModule,
     InteractiveServiceModule,
