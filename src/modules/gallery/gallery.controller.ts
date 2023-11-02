@@ -42,6 +42,28 @@ export class GalleryController {
   }
 
   @Public()
+  @Get('/photo')
+  @ApiOperation({ summary: 'Method: returns all photo galleries' })
+  @ApiOkResponse({
+    description: 'The photo galleries were returned successfully',
+  })
+  @HttpCode(HttpStatus.OK)
+  async getPhotGallery(@Route() route: string, @Query() query: PaginationDto) {
+    return await this.galleryService.getPhotoGallery({ ...query, route });
+  }
+
+  @Public()
+  @Get('/video')
+  @ApiOperation({ summary: 'Method: returns all video galleries' })
+  @ApiOkResponse({
+    description: 'The video galleries were returned successfully',
+  })
+  @HttpCode(HttpStatus.OK)
+  async getVideoGallery(@Route() route: string, @Query() query: PaginationDto) {
+    return await this.galleryService.getVideoGallery({ ...query, route });
+  }
+
+  @Public()
   @Get('/:id')
   @ApiOperation({ summary: 'Method: returns single gallery by id' })
   @ApiOkResponse({

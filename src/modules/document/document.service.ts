@@ -56,6 +56,26 @@ export class DocumentService {
     });
   }
 
+  async getSubsidyDocument(
+    options: IPaginationOptions,
+  ): Promise<Pagination<Document>> {
+    return paginate<Document>(this.documentRepository, options, {
+      where:{
+        type:DocumentTypeEnum.SUBSIDY
+      }
+    });
+  }
+
+  async getOnlineCreditDocument(
+    options: IPaginationOptions,
+  ): Promise<Pagination<Document>> {
+    return paginate<Document>(this.documentRepository, options, {
+      where:{
+        type:DocumentTypeEnum.ONLINE_CREDIT
+      }
+    });
+  }
+
   async deleteOne(id: string) {
     const response = await this.documentRepository.delete(id).catch(() => {
       throw new NotFoundException('data not found');

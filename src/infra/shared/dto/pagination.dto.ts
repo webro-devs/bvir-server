@@ -32,14 +32,6 @@ class PaginationDto {
   @Transform(parsePaginationQuery)
   readonly page: number = 1;
 
-  @ApiProperty({
-    description: `IsActive`,
-    example: true,
-  })
-  @IsOptional()
-  @IsString()
-  readonly isActive?: string;
-
   constructor() {
     this.limit = this.limit ? this.limit : 100;
     this.page = this.page ? this.page : 1;

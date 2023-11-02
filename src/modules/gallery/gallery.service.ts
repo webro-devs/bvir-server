@@ -9,6 +9,7 @@ import {
 import { UpdateGalleryDto, CreateGalleryDto } from './dto';
 import { Gallery } from './gallery.entity';
 import { InjectRepository } from '@nestjs/typeorm';
+import { GalleryTypeEnum } from 'src/infra/shared/enum';
 
 @Injectable()
 export class GalleryService {
@@ -34,6 +35,26 @@ export class GalleryService {
       });
 
     return data;
+  }
+
+  async getPhotoGallery(
+    options: IPaginationOptions,
+  ): Promise<Pagination<Gallery>> {
+    return paginate<Gallery>(this.galleryRepository, options, {
+      where:{
+        type:GalleryTypeEnum.PHOTO
+      }
+    });
+  }
+
+  async getVideoGallery(
+    options: IPaginationOptions,
+  ): Promise<Pagination<Gallery>> {
+    return paginate<Gallery>(this.galleryRepository, options, {
+      where:{
+        type: GalleryTypeEnum.VIDEO
+      }
+    });
   }
 
   async deleteOne(id: string) {

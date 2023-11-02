@@ -9,8 +9,8 @@ export class Gallery {
   @Column('varchar')
   type: GalleryTypeEnum;
 
-  @Column({ type: 'text' })
-  url: string;
+  @Column({ type: 'jsonb' })
+  url: string[];
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   date: string;

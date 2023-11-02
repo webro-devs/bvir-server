@@ -31,7 +31,7 @@ export class DocumentController {
   constructor(private readonly documentService: DocumentService) {}
 
   @Public()
-  @Get('/')
+  @Get('/regulatory')
   @ApiOperation({ summary: 'Method: returns all regulatory documents' })
   @ApiOkResponse({
     description: 'The regulatory documents were returned successfully',
@@ -42,7 +42,29 @@ export class DocumentController {
   }
 
   @Public()
-  @Get('/')
+  @Get('/online-credit')
+  @ApiOperation({ summary: 'Method: returns all online-credit documents' })
+  @ApiOkResponse({
+    description: 'The online-credit documents were returned successfully',
+  })
+  @HttpCode(HttpStatus.OK)
+  async getOnlineCreditDoc(@Route() route: string, @Query() query: PaginationDto) {
+    return await this.documentService.getOnlineCreditDocument({ ...query, route });
+  }
+
+  @Public()
+  @Get('/subsidy')
+  @ApiOperation({ summary: 'Method: returns all subsidy documents' })
+  @ApiOkResponse({
+    description: 'The subsidy documents were returned successfully',
+  })
+  @HttpCode(HttpStatus.OK)
+  async getSubsidyDoc(@Route() route: string, @Query() query: PaginationDto) {
+    return await this.documentService.getSubsidyDocument({ ...query, route });
+  }
+
+  @Public()
+  @Get('/open-data')
   @ApiOperation({ summary: 'Method: returns all open documents' })
   @ApiOkResponse({
     description: 'The open documents were returned successfully',
