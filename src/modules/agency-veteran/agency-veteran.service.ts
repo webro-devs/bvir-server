@@ -19,7 +19,6 @@ export class AgencyVeteranService {
 
   async getAll(
     options: IPaginationOptions,
-    where?: FindOptionsWhere<AgencyVeteran>,
   ): Promise<Pagination<AgencyVeteran>> {
     return paginate<AgencyVeteran>(this.agencyVeteranRepository, options, {});
   }
