@@ -19,6 +19,7 @@ import { UsefulLinkModule } from './modules/useful-link/useful-link.module';
 import { TerritorialDivisionModule } from './modules/territorial-division/territorial-division.module';
 import { TerritorialManagementModule } from './modules/territorial-management/territorial-management.module';
 import { AgencyStatisticModule } from './modules/agency-statistic/agency-statistic.module';
+import { AgencyVeteranModule } from './modules/agency-veteran/agency-veteran.module';
 
 @Module({
   imports: [
@@ -36,6 +37,7 @@ import { AgencyStatisticModule } from './modules/agency-statistic/agency-statist
     AuthModule,
     AgencyModule,
     AgencyStatisticModule,
+    AgencyVeteranModule,
     BannerModule,
     CommunicationToolModule,
     DocumentModule,
