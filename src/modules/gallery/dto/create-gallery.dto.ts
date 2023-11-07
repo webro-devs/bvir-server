@@ -1,6 +1,7 @@
 import { IsArray, IsNotEmpty, IsOptional, IsString } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 import { GalleryTypeEnum } from '../../../infra/shared/enum';
+import { GalleryType } from 'src/infra/shared/type';
 class CreateGalleryDto {
   @ApiProperty({
     description: `type`,
@@ -8,7 +9,7 @@ class CreateGalleryDto {
   })
   @IsNotEmpty()
   @IsString()
-  type: GalleryTypeEnum;
+  type: GalleryType;
 
   @ApiProperty({
     description: `url`,

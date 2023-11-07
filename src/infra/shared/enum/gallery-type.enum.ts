@@ -1,6 +1,6 @@
 enum GalleryTypeEnum {
-  PHOTO = 'Photo',
-  VIDEO = 'Video',
+  PHOTO = 'photo',
+  VIDEO = 'video',
 }
 
 export default GalleryTypeEnum;

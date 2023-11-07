@@ -1,4 +1,4 @@
-import { GalleryTypeEnum } from 'src/infra/shared/enum';
+import { GalleryType } from 'src/infra/shared/type';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('gallery')
@@ -7,7 +7,7 @@ export class Gallery {
   id: string;
 
   @Column('varchar')
-  type: GalleryTypeEnum;
+  type: GalleryType;
 
   @Column({ type: 'jsonb' })
   url: string[];
