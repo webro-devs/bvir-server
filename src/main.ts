@@ -28,11 +28,11 @@ async function bootstrap() {
     }),
   );
 
-  const reflector = app.get(Reflector);
-  app.useGlobalGuards(
-    new AccessTokenUserGuard(reflector),
-    new RolesGuard(reflector),
-  );
+  // const reflector = app.get(Reflector);
+  // app.useGlobalGuards(
+  //   new AccessTokenUserGuard(reflector),
+  //   new RolesGuard(reflector),
+  // );
 
   const config = new DocumentBuilder()
     .setTitle('Bvir uz')
