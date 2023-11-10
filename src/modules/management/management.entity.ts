@@ -82,7 +82,10 @@ export class Management {
   @Column({type:"text", nullable:true})
   taskEn: string;
 
-  @ManyToOne(()=>ManagementApparatusType, ma=>ma.managementApparatus)
+  @ManyToOne(()=>ManagementApparatusType, ma=>ma.managementApparatus,{
+    cascade:true,
+    onDelete:"CASCADE"
+  })
   @JoinColumn()
   apparatusType: ManagementApparatusType
 }
