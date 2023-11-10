@@ -30,20 +30,24 @@ export class ManagementService {
     return data;
   }
 
-  async getManagement( options: IPaginationOptions): Promise<Pagination<Management>>{
-     return paginate<Management>(this.managementRepository, options, {
-      where:{
-        type:ManagementEnum.MANAGEMENT
-      }
-     });
+  async getManagement(
+    options: IPaginationOptions,
+  ): Promise<Pagination<Management>> {
+    return paginate<Management>(this.managementRepository, options, {
+      where: {
+        type: ManagementEnum.MANAGEMENT,
+      },
+    });
   }
 
-  async getCentralApparatus( options: IPaginationOptions): Promise<Pagination<Management>>{
+  async getCentralApparatus(
+    options: IPaginationOptions,
+  ): Promise<Pagination<Management>> {
     return paginate<Management>(this.managementRepository, options, {
-      where:{
-        type:ManagementEnum.CENTRAL_APPARATUS
-      }
-     });
+      where: {
+        type: ManagementEnum.CENTRAL_APPARATUS,
+      },
+    });
   }
 
   async deleteOne(id: string) {
@@ -54,12 +58,23 @@ export class ManagementService {
   }
 
   async change(value: UpdateManagementDto, id: string) {
-    const response = await this.managementRepository.update({ id }, value);
+    const response = await this.managementRepository
+      .createQueryBuilder()
+      .update()
+      .set(value as unknown as Management)
+      .where('id = :id', { id })
+      .execute();
     return response;
   }
 
   async create(value: CreateManagementDto) {
-   const data = this.managementRepository.create(value)
-   return await this.managementRepository.save(data)
+    const data = await this.managementRepository
+      .createQueryBuilder()
+      .insert()
+      .into(Management)
+      .values(value as unknown as Management)
+      .execute();
+
+    return data;
   }
 }

@@ -69,7 +69,7 @@ export class ManagementController {
     description: 'The management was created successfully',
   })
   @HttpCode(HttpStatus.CREATED)
-  async saveData(@Body() data: CreateManagementDto): Promise<Management> {
+  async saveData(@Body() data: CreateManagementDto) {
     return await this.managementService.create(data);
   }
 

@@ -1,5 +1,6 @@
 import { ManagementType } from 'src/infra/shared/type';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { ManagementApparatusType } from '../menagement-apparatus-type/management-apparatus-type.entity';
 
 @Entity('management')
 export class Management {
@@ -80,4 +81,8 @@ export class Management {
 
   @Column({type:"text", nullable:true})
   taskEn: string;
+
+  @ManyToOne(()=>ManagementApparatusType, ma=>ma.managementApparatus)
+  @JoinColumn()
+  apparatusType: ManagementApparatusType
 }

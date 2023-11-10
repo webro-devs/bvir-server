@@ -195,5 +195,13 @@ class UpdateManagementDto {
   @IsOptional()
   @IsString()
   readonly taskEn: string;
+
+  @ApiProperty({
+    description: `apparatusType`,
+    example: "uuid",
+  })
+  @IsOptional()
+  @IsString()
+  readonly apparatusType: string;
 }
 export default UpdateManagementDto;

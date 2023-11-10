@@ -195,6 +195,14 @@ class CreateManagementDto {
   @IsOptional()
   @IsString()
   readonly taskEn: string;
+
+  @ApiProperty({
+    description: `apparatusType`,
+    example: "uuid",
+  })
+  @IsOptional()
+  @IsString()
+  readonly apparatusType: string;
 }
 
 export default CreateManagementDto;

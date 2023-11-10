@@ -20,6 +20,7 @@ import { TerritorialDivisionModule } from './modules/territorial-division/territ
 import { TerritorialManagementModule } from './modules/territorial-management/territorial-management.module';
 import { AgencyStatisticModule } from './modules/agency-statistic/agency-statistic.module';
 import { AgencyVeteranModule } from './modules/agency-veteran/agency-veteran.module';
+import { ManagementApparatusTypeModule } from './modules/menagement-apparatus-type/management-apparatus-type.module';
 
 @Module({
   imports: [
@@ -44,6 +45,7 @@ import { AgencyVeteranModule } from './modules/agency-veteran/agency-veteran.mod
     GalleryModule,
     InteractiveServiceModule,
     ManagementModule,
+    ManagementApparatusTypeModule,
     InformationModule,
     StatisticModule,
     TerritorialDivisionModule,
