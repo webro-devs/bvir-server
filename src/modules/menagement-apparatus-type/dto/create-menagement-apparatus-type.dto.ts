@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 class CreateManagementApparatusTypeDto {
   @ApiProperty({
@@ -24,6 +24,14 @@ class CreateManagementApparatusTypeDto {
   @IsOptional()
   @IsString()
   readonly typeEn: string;
+
+  @ApiProperty({
+    description: `index`,
+    example: "",
+  })
+  @IsOptional()
+  @IsNumber()
+  readonly index: number;
 }
 
 export default CreateManagementApparatusTypeDto;

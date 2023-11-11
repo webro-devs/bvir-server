@@ -6,6 +6,9 @@ export class ManagementApparatusType {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
+  @Column({type:"int", nullable:true})
+  index:number
+
   @Column({ type: 'text' })
   typeUz: string;
 

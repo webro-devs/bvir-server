@@ -23,6 +23,9 @@ export class ManagementApparatusTypeService {
     return paginate<ManagementApparatusType>(this.managementApparatusTypeRepository, options, {
       relations:{
         managementApparatus:true
+      },
+      order:{
+        index:"ASC"
       }
     });
   }
@@ -31,6 +34,9 @@ export class ManagementApparatusTypeService {
     const data = await this.managementApparatusTypeRepository
       .findOne({
         where: { id },
+        relations:{
+          managementApparatus:true
+        }
       })
       .catch(() => {
         throw new NotFoundException('data not found');

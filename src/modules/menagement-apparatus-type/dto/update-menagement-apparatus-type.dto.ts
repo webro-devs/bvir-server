@@ -1,4 +1,4 @@
-import { IsString, IsOptional } from 'class-validator';
+import { IsString, IsOptional, IsNumber } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 class UpdateManagementApparatusTypeDto {
   @ApiProperty({
@@ -24,5 +24,13 @@ class UpdateManagementApparatusTypeDto {
   @IsOptional()
   @IsString()
   readonly typeEn: string;
+
+  @ApiProperty({
+    description: `index`,
+    example: "",
+  })
+  @IsOptional()
+  @IsNumber()
+  readonly index: number;
 }
 export default UpdateManagementApparatusTypeDto;
