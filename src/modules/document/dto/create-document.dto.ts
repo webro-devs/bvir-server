@@ -20,6 +20,14 @@ class CreateDocumentDto {
   link: string;
 
   @ApiProperty({
+    description: `code`,
+    example: 'Document code',
+  })
+  @IsNotEmpty()
+  @IsString()
+  code: string;
+
+  @ApiProperty({
     description: `titleUz`,
     example: "",
   })

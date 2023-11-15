@@ -12,6 +12,9 @@ export class Document {
   @Column({ type: 'text' })
   link: string;
 
+  @Column({ type: 'varchar' })
+  code: string;
+
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   date: string;
 

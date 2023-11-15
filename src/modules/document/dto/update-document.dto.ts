@@ -20,6 +20,14 @@ class UpdateDocumentDto {
   link: string;
 
   @ApiProperty({
+    description: `code`,
+    example: 'Document code',
+  })
+  @IsOptional()
+  @IsString()
+  code: string;
+
+  @ApiProperty({
     description: `titleUz`,
     example: "",
   })
