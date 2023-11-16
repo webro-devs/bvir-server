@@ -1,15 +1,15 @@
 import { IsString, IsOptional } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
-import { DocumentType } from 'src/infra/shared/type';
-import { DocumentTypeEnum } from 'src/infra/shared/enum';
+import { OpenDocumentType } from 'src/infra/shared/type';
+import {  OpenDocumentTypeEnum } from 'src/infra/shared/enum';
 class UpdateDocumentDto {
   @ApiProperty({
     description: `type`,
-    example: DocumentTypeEnum.DOCUMENT_2,
+    example: OpenDocumentTypeEnum.PF,
   })
   @IsOptional()
   @IsString()
-  type: DocumentType;
+  type: OpenDocumentType;
 
   @ApiProperty({
     description: `link`,

@@ -36,42 +36,52 @@ export class DocumentService {
     return data;
   }
 
-  async getRegulatoryDocument(
+  async getDocument_1(
     options: IPaginationOptions,
   ): Promise<Pagination<Document>> {
     return paginate<Document>(this.documentRepository, options, {
       where:{
-        type:DocumentTypeEnum.REGULATORY
+        type:DocumentTypeEnum.DOCUMENT_1
       }
     });
   }
 
-  async getOpenDocument(
+  async getDocument_2(
     options: IPaginationOptions,
   ): Promise<Pagination<Document>> {
     return paginate<Document>(this.documentRepository, options, {
       where:{
-        type:DocumentTypeEnum.OPEN
+        type:DocumentTypeEnum.DOCUMENT_2
       }
     });
   }
 
-  async getSubsidyDocument(
+  async getDocument_3(
     options: IPaginationOptions,
   ): Promise<Pagination<Document>> {
     return paginate<Document>(this.documentRepository, options, {
       where:{
-        type:DocumentTypeEnum.SUBSIDY
+        type:DocumentTypeEnum.DOCUMENT_3
       }
     });
   }
 
-  async getOnlineCreditDocument(
+  async getDocument_4(
     options: IPaginationOptions,
   ): Promise<Pagination<Document>> {
     return paginate<Document>(this.documentRepository, options, {
       where:{
-        type:DocumentTypeEnum.ONLINE_CREDIT
+        type:DocumentTypeEnum.DOCUMENT_4
+      }
+    });
+  }
+
+  async getDocument_5(
+    options: IPaginationOptions,
+  ): Promise<Pagination<Document>> {
+    return paginate<Document>(this.documentRepository, options, {
+      where:{
+        type:DocumentTypeEnum.DOCUMENT_5
       }
     });
   }

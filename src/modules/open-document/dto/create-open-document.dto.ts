@@ -1,21 +1,21 @@
-import { IsString, IsOptional } from 'class-validator';
+import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
-import { DocumentType } from 'src/infra/shared/type';
-import { DocumentTypeEnum } from 'src/infra/shared/enum';
-class UpdateDocumentDto {
+import { OpenDocumentType } from 'src/infra/shared/type';
+import {  OpenDocumentTypeEnum } from 'src/infra/shared/enum';
+class CreateOpenDocumentDto {
   @ApiProperty({
     description: `type`,
-    example: DocumentTypeEnum.DOCUMENT_2,
+    example: OpenDocumentTypeEnum.ORGANIZATION_INCLUDED,
   })
-  @IsOptional()
+  @IsNotEmpty()
   @IsString()
-  type: DocumentType;
+  type: OpenDocumentType;
 
   @ApiProperty({
     description: `link`,
     example: 'Document link',
   })
-  @IsOptional()
+  @IsNotEmpty()
   @IsString()
   link: string;
 
@@ -23,7 +23,7 @@ class UpdateDocumentDto {
     description: `code`,
     example: 'Document code',
   })
-  @IsOptional()
+  @IsNotEmpty()
   @IsString()
   code: string;
 
@@ -31,7 +31,7 @@ class UpdateDocumentDto {
     description: `titleUz`,
     example: "",
   })
-  @IsOptional()
+  @IsNotEmpty()
   @IsString()
   readonly titleUz: string;
 
@@ -51,4 +51,5 @@ class UpdateDocumentDto {
   @IsString()
   readonly titleEn: string;
 }
-export default UpdateDocumentDto;
+
+export default CreateOpenDocumentDto;

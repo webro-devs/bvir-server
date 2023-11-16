@@ -4,3 +4,4 @@ export { default as ManagementEnum } from './management.enum';
 export {default as InformationTypeEnum} from './information-type.enum'
 export {default as DocumentTypeEnum} from './document-type.enum'
 export {default as BannerTypeEnum} from './banner-type.enum'
+export {default as OpenDocumentTypeEnum} from './open-document-type.enum'

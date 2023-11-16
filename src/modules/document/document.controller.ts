@@ -31,47 +31,58 @@ export class DocumentController {
   constructor(private readonly documentService: DocumentService) {}
 
   @Public()
-  @Get('/regulatory')
+  @Get('/document-1')
   @ApiOperation({ summary: 'Method: returns all regulatory documents' })
   @ApiOkResponse({
     description: 'The regulatory documents were returned successfully',
   })
   @HttpCode(HttpStatus.OK)
-  async getRegulatoryDoc(@Route() route: string, @Query() query: PaginationDto) {
-    return await this.documentService.getRegulatoryDocument({ ...query, route });
+  async getDoc_1(@Route() route: string, @Query() query: PaginationDto) {
+    return await this.documentService.getDocument_1({ ...query, route });
   }
 
   @Public()
-  @Get('/online-credit')
+  @Get('/document-2')
   @ApiOperation({ summary: 'Method: returns all online-credit documents' })
   @ApiOkResponse({
     description: 'The online-credit documents were returned successfully',
   })
   @HttpCode(HttpStatus.OK)
-  async getOnlineCreditDoc(@Route() route: string, @Query() query: PaginationDto) {
-    return await this.documentService.getOnlineCreditDocument({ ...query, route });
+  async getDoc_2(@Route() route: string, @Query() query: PaginationDto) {
+    return await this.documentService.getDocument_2({ ...query, route });
   }
 
   @Public()
-  @Get('/subsidy')
+  @Get('/document-3')
   @ApiOperation({ summary: 'Method: returns all subsidy documents' })
   @ApiOkResponse({
     description: 'The subsidy documents were returned successfully',
   })
   @HttpCode(HttpStatus.OK)
-  async getSubsidyDoc(@Route() route: string, @Query() query: PaginationDto) {
-    return await this.documentService.getSubsidyDocument({ ...query, route });
+  async getDoc_3(@Route() route: string, @Query() query: PaginationDto) {
+    return await this.documentService.getDocument_3({ ...query, route });
   }
 
   @Public()
-  @Get('/open-data')
+  @Get('/document-4')
   @ApiOperation({ summary: 'Method: returns all open documents' })
   @ApiOkResponse({
     description: 'The open documents were returned successfully',
   })
   @HttpCode(HttpStatus.OK)
-  async getOpenDoc(@Route() route: string, @Query() query: PaginationDto) {
-    return await this.documentService.getOpenDocument({ ...query, route });
+  async getDoc_4(@Route() route: string, @Query() query: PaginationDto) {
+    return await this.documentService.getDocument_4({ ...query, route });
+  }
+
+  @Public()
+  @Get('/document-5')
+  @ApiOperation({ summary: 'Method: returns all open documents' })
+  @ApiOkResponse({
+    description: 'The open documents were returned successfully',
+  })
+  @HttpCode(HttpStatus.OK)
+  async getDoc_5(@Route() route: string, @Query() query: PaginationDto) {
+    return await this.documentService.getDocument_5({ ...query, route });
   }
 
   @Public()

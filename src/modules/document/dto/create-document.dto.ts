@@ -5,7 +5,7 @@ import { DocumentTypeEnum } from 'src/infra/shared/enum';
 class CreateDocumentDto {
   @ApiProperty({
     description: `type`,
-    example: DocumentTypeEnum.REGULATORY,
+    example: DocumentTypeEnum.DOCUMENT_1,
   })
   @IsNotEmpty()
   @IsString()

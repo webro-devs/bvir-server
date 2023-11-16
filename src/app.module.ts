@@ -21,6 +21,7 @@ import { TerritorialManagementModule } from './modules/territorial-management/te
 import { AgencyStatisticModule } from './modules/agency-statistic/agency-statistic.module';
 import { AgencyVeteranModule } from './modules/agency-veteran/agency-veteran.module';
 import { ManagementApparatusTypeModule } from './modules/menagement-apparatus-type/management-apparatus-type.module';
+import { OpenDocumentModule } from './modules/open-document/open-document.module';
 
 @Module({
   imports: [
@@ -43,10 +44,11 @@ import { ManagementApparatusTypeModule } from './modules/menagement-apparatus-ty
     CommunicationToolModule,
     DocumentModule,
     GalleryModule,
+    InformationModule,
     InteractiveServiceModule,
     ManagementModule,
     ManagementApparatusTypeModule,
-    InformationModule,
+    OpenDocumentModule,
     StatisticModule,
     TerritorialDivisionModule,
     TerritorialManagementModule,
