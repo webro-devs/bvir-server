@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 import { OpenDocumentType } from 'src/infra/shared/type';
 import {  OpenDocumentTypeEnum } from 'src/infra/shared/enum';
@@ -26,6 +26,14 @@ class CreateOpenDocumentDto {
   @IsNotEmpty()
   @IsString()
   code: string;
+
+  @ApiProperty({
+    description: `quarter`,
+    example: 1,
+  })
+  @IsOptional()
+  @IsNumber()
+  quarter: number;
 
   @ApiProperty({
     description: `titleUz`,

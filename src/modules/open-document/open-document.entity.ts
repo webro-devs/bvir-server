@@ -15,6 +15,9 @@ export class OpenDocument {
   @Column({ type: 'varchar',nullable:true })
   code: string;
 
+  @Column({type:"int",nullable:true})
+  quarter:number
+
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   date: string;
 

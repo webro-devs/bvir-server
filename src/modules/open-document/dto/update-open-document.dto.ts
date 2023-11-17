@@ -1,4 +1,4 @@
-import { IsString, IsOptional } from 'class-validator';
+import { IsString, IsOptional, IsNumber } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 import { OpenDocumentType } from 'src/infra/shared/type';
 import {  OpenDocumentTypeEnum } from 'src/infra/shared/enum';
@@ -18,6 +18,14 @@ class UpdateDocumentDto {
   @IsOptional()
   @IsString()
   link: string;
+
+  @ApiProperty({
+    description: `quarter`,
+    example: 1,
+  })
+  @IsOptional()
+  @IsNumber()
+  quarter: number;
 
   @ApiProperty({
     description: `code`,
