@@ -24,7 +24,7 @@ class CreateManagementDto {
     description: `phone`,
     example: '+998 99-999-88-77',
   })
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   phone: string;
 
@@ -32,7 +32,7 @@ class CreateManagementDto {
     description: `gmail`,
     example: 'some@thing.com',
   })
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   gmail: string;
 
@@ -40,7 +40,7 @@ class CreateManagementDto {
     description: `telegram`,
     example: 'telegram',
   })
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   telegram: string;
 
@@ -48,7 +48,7 @@ class CreateManagementDto {
     description: `twitter`,
     example: 'twitter',
   })
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   twitter: string;
 
@@ -56,7 +56,7 @@ class CreateManagementDto {
     description: `linkedin`,
     example: 'linkedin',
   })
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   linkedin: string;
 
@@ -64,7 +64,7 @@ class CreateManagementDto {
     description: `facebook`,
     example: 'facebook',
   })
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   facebook: string;
 
@@ -72,7 +72,7 @@ class CreateManagementDto {
     description: `instagram`,
     example: 'instagram',
   })
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   instagram: string;
 
