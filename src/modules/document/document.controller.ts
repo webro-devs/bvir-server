@@ -31,6 +31,17 @@ export class DocumentController {
   constructor(private readonly documentService: DocumentService) {}
 
   @Public()
+  @Get('/')
+  @ApiOperation({ summary: 'Method: returns all all documents' })
+  @ApiOkResponse({
+    description: 'The regulatory documents were returned successfully',
+  })
+  @HttpCode(HttpStatus.OK)
+  async getAll(@Route() route: string, @Query() query: PaginationDto) {
+    return await this.documentService.getAll({ ...query, route });
+  }
+
+  @Public()
   @Get('/document-1')
   @ApiOperation({ summary: 'Method: returns all regulatory documents' })
   @ApiOkResponse({

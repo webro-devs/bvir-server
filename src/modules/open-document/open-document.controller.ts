@@ -31,6 +31,17 @@ export class OpenDocumentController {
   constructor(private readonly openDocumentService: OpenDocumentService) {}
 
   @Public()
+  @Get('/')
+  @ApiOperation({ summary: 'Method: returns all open documents' })
+  @ApiOkResponse({
+    description: 'The regulatory documents were returned successfully',
+  })
+  @HttpCode(HttpStatus.OK)
+  async getAll(@Route() route: string, @Query() query: PaginationDto) {
+    return await this.openDocumentService.getAll({ ...query, route });
+  }
+
+  @Public()
   @Get('/budget-legislation')
   @ApiOperation({ summary: 'Method: returns all budget legislation information documents' })
   @ApiOkResponse({
