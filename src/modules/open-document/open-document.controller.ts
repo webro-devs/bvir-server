@@ -9,6 +9,7 @@ import {
   Param,
   Get,
   Query,
+  Req,
 } from '@nestjs/common';
 import { UpdateResult } from 'typeorm';
 import {
@@ -18,7 +19,11 @@ import {
   ApiOperation,
 } from '@nestjs/swagger';
 
-import { CreateOpenDocumentDto, UpdateOpenDocumentDto } from './dto';
+import {
+  CreateOpenDocumentDto,
+  QueryOpenDocumentDto,
+  UpdateOpenDocumentDto,
+} from './dto';
 import { OpenDocument } from './open-document.entity';
 import { OpenDocumentService } from './open-document.service';
 import { PaginationDto } from '../../infra/shared/dto';
@@ -37,30 +42,55 @@ export class OpenDocumentController {
     description: 'The regulatory documents were returned successfully',
   })
   @HttpCode(HttpStatus.OK)
-  async getAll(@Route() route: string, @Query() query: PaginationDto) {
-    return await this.openDocumentService.getAll({ ...query, route });
+  async getAll(
+    @Route() route: string,
+    @Query() query: PaginationDto & QueryOpenDocumentDto,
+    @Req() req,
+  ) {
+    return await this.openDocumentService.getAll(
+      { ...query, route },
+      req['where'],
+    );
   }
 
   @Public()
   @Get('/budget-legislation')
-  @ApiOperation({ summary: 'Method: returns all budget legislation information documents' })
+  @ApiOperation({
+    summary: 'Method: returns all budget legislation information documents',
+  })
   @ApiOkResponse({
     description: 'The regulatory documents were returned successfully',
   })
   @HttpCode(HttpStatus.OK)
-  async getRegulatoryDoc(@Route() route: string, @Query() query: PaginationDto) {
-    return await this.openDocumentService.getBudgetOpenDocument({ ...query, route });
+  async getRegulatoryDoc(
+    @Route() route: string,
+    @Query() query: PaginationDto & QueryOpenDocumentDto,
+    @Req() req,
+  ) {
+    return await this.openDocumentService.getBudgetOpenDocument(
+      {...query,route},
+      req['where'],
+    );
   }
 
   @Public()
   @Get('/organizations-included')
-  @ApiOperation({ summary: 'Method: returns all organizations included documents' })
+  @ApiOperation({
+    summary: 'Method: returns all organizations included documents',
+  })
   @ApiOkResponse({
     description: 'The online-credit documents were returned successfully',
   })
   @HttpCode(HttpStatus.OK)
-  async getOnlineCreditDoc(@Route() route: string, @Query() query: PaginationDto) {
-    return await this.openDocumentService.getOrganizationOpenDocument({ ...query, route });
+  async getOnlineCreditDoc(
+    @Route() route: string,
+    @Query() query: PaginationDto & QueryOpenDocumentDto,
+    @Req() req,
+  ) {
+    return await this.openDocumentService.getOrganizationOpenDocument(
+      {...query,route},
+      req['where'],
+    );
   }
 
   @Public()
@@ -70,8 +100,15 @@ export class OpenDocumentController {
     description: 'The subsidy documents were returned successfully',
   })
   @HttpCode(HttpStatus.OK)
-  async getSubsidyDoc(@Route() route: string, @Query() query: PaginationDto) {
-    return await this.openDocumentService.getFpOpenDocument({ ...query, route });
+  async getSubsidyDoc(
+    @Route() route: string,
+    @Query() query: PaginationDto & QueryOpenDocumentDto,
+    @Req() req,
+  ) {
+    return await this.openDocumentService.getFpOpenDocument(
+      {...query,route},
+      req['where'],
+    );
   }
 
   @Public()

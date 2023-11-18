@@ -1,0 +1,1 @@
+export {default as OpenDataQueryParserMiddleware} from './open-data.middleware'

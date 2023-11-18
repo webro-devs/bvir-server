@@ -20,8 +20,9 @@ export class OpenDocumentService {
 
   async getAll(
     options: IPaginationOptions,
+    where
   ): Promise<Pagination<OpenDocument>> {
-    return paginate<OpenDocument>(this.openDocumentRepository, options, {});
+    return paginate<OpenDocument>(this.openDocumentRepository, options, {where});
   }
 
   async getOne(id: string) {
@@ -38,30 +39,36 @@ export class OpenDocumentService {
 
   async getBudgetOpenDocument(
     options: IPaginationOptions,
+    where
   ): Promise<Pagination<OpenDocument>> {
     return paginate<OpenDocument>(this.openDocumentRepository, options, {
       where:{
-        type:OpenDocumentTypeEnum.BUDGET_LEGISLATION_INFORMATION
+        type:OpenDocumentTypeEnum.BUDGET_LEGISLATION_INFORMATION,
+        ...where
       }
     });
   }
 
   async getOrganizationOpenDocument(
     options: IPaginationOptions,
+    where
   ): Promise<Pagination<OpenDocument>> {
     return paginate<OpenDocument>(this.openDocumentRepository, options, {
       where:{
-        type:OpenDocumentTypeEnum.ORGANIZATION_INCLUDED
+        type:OpenDocumentTypeEnum.ORGANIZATION_INCLUDED,
+        ...where
       }
     });
   }
 
   async getFpOpenDocument(
     options: IPaginationOptions,
+    where
   ): Promise<Pagination<OpenDocument>> {
     return paginate<OpenDocument>(this.openDocumentRepository, options, {
       where:{
-        type:OpenDocumentTypeEnum.PF
+        type:OpenDocumentTypeEnum.PF,
+        ...where
       }
     });
   }
