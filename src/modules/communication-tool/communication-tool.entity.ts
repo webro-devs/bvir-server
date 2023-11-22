@@ -5,8 +5,8 @@ export class CommunicationTool {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({ type: 'text' })
-  url: string;
+  // @Column({ type: 'text' })
+  // url: string;
 
   @Column({ type: 'text' })
   mapLink: string;

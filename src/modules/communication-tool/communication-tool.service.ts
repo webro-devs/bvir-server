@@ -1,4 +1,4 @@
-import { NotFoundException, Injectable } from '@nestjs/common';
+import { NotFoundException, Injectable, BadRequestException } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import {
   IPaginationOptions,
@@ -48,6 +48,10 @@ export class CommunicationToolService {
   }
 
   async create(value: CreateCommunicationToolDto) {
+    const dataExist = await this.communicationToolRepository.find()
+    if(dataExist.length){
+      throw new BadRequestException("Data already exist")
+    }
     const data = this.communicationToolRepository.create(value)
     return await this.communicationToolRepository.save(data)
   }
