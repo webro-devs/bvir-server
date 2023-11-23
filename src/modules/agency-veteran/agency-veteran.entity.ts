@@ -8,6 +8,9 @@ export class AgencyVeteran {
   @Column({ type: 'text' })
   url: string;
 
+  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP', nullable:true })
+  date: string;
+
   @Column({ type: 'text' })
   nameUz: string;
 

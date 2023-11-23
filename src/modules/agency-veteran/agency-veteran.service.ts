@@ -1,5 +1,5 @@
 import { NotFoundException, Injectable } from '@nestjs/common';
-import { FindOptionsWhere, Repository } from 'typeorm';
+import { Repository } from 'typeorm';
 import {
   IPaginationOptions,
   Pagination,
@@ -9,13 +9,15 @@ import {
 import { UpdateAgencyVeteranDto, CreateAgencyVeteranDto } from './dto';
 import { AgencyVeteran } from './agency-veteran.entity';
 import { InjectRepository } from '@nestjs/typeorm';
+import { AxiosService } from '../axios/axios.service';
 
 @Injectable()
 export class AgencyVeteranService {
   constructor(
     @InjectRepository(AgencyVeteran)
     private readonly agencyVeteranRepository: Repository<AgencyVeteran>,
-  ){}
+    private readonly axiosService: AxiosService,
+  ) {}
 
   async getAll(
     options: IPaginationOptions,
@@ -36,6 +38,10 @@ export class AgencyVeteranService {
   }
 
   async deleteOne(id: string) {
+    const data = await this.getOne(id);
+    if (data.url) {
+      await this.axiosService.deleteFile(data.url);
+    }
     const response = await this.agencyVeteranRepository.delete(id).catch(() => {
       throw new NotFoundException('data not found');
     });
@@ -43,12 +49,12 @@ export class AgencyVeteranService {
   }
 
   async change(value: UpdateAgencyVeteranDto, id: string) {
-    const data = await this.agencyVeteranRepository.update(id,value)
-    return data
+    const data = await this.agencyVeteranRepository.update(id, value);
+    return data;
   }
 
   async create(value: CreateAgencyVeteranDto) {
-    const data = this.agencyVeteranRepository.create(value)
-    return await this.agencyVeteranRepository.save(data)
+    const data = this.agencyVeteranRepository.create(value);
+    return await this.agencyVeteranRepository.save(data);
   }
 }

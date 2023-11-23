@@ -10,12 +10,14 @@ import { UpdateGalleryDto, CreateGalleryDto } from './dto';
 import { Gallery } from './gallery.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { GalleryTypeEnum } from 'src/infra/shared/enum';
+import { AxiosService } from '../axios/axios.service';
 
 @Injectable()
 export class GalleryService {
   constructor(
     @InjectRepository(Gallery)
     private readonly galleryRepository: Repository<Gallery>,
+    private readonly axiosService: AxiosService,
   ) {}
 
   async getAll(
@@ -41,9 +43,9 @@ export class GalleryService {
     options: IPaginationOptions,
   ): Promise<Pagination<Gallery>> {
     return paginate<Gallery>(this.galleryRepository, options, {
-      where:{
-        type:GalleryTypeEnum.PHOTO
-      }
+      where: {
+        type: GalleryTypeEnum.PHOTO,
+      },
     });
   }
 
@@ -51,13 +53,23 @@ export class GalleryService {
     options: IPaginationOptions,
   ): Promise<Pagination<Gallery>> {
     return paginate<Gallery>(this.galleryRepository, options, {
-      where:{
-        type: GalleryTypeEnum.VIDEO
-      }
+      where: {
+        type: GalleryTypeEnum.VIDEO,
+      },
     });
   }
 
   async deleteOne(id: string) {
+    const data = await this.getOne(id);
+    if (data.type == 'photo') {
+      if (data.url.length) {
+        await Promise.all(
+          data.url.map(async (e) => {
+            await this.axiosService.deleteFile(e);
+          }),
+        );
+      }
+    }
     const response = await this.galleryRepository.delete(id).catch(() => {
       throw new NotFoundException('data not found');
     });

@@ -5,9 +5,10 @@ import { OpenDocument } from './open-document.entity';
 import { OpenDocumentService } from './open-document.service';
 import { OpenDocumentController } from './open-document.controller';
 import { OpenDataQueryParserMiddleware } from 'src/infra/middleware';
+import { AxiosModule } from '../axios/axios.module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([OpenDocument])],
+  imports: [TypeOrmModule.forFeature([OpenDocument]), AxiosModule],
   controllers: [OpenDocumentController],
   providers: [OpenDocumentService],
   exports: [OpenDocumentService],
