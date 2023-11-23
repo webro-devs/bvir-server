@@ -22,6 +22,7 @@ import { AgencyStatisticModule } from './modules/agency-statistic/agency-statist
 import { AgencyVeteranModule } from './modules/agency-veteran/agency-veteran.module';
 import { ManagementApparatusTypeModule } from './modules/menagement-apparatus-type/management-apparatus-type.module';
 import { OpenDocumentModule } from './modules/open-document/open-document.module';
+import { AxiosModule } from './modules/axios/axios.module';
 
 @Module({
   imports: [
@@ -40,6 +41,7 @@ import { OpenDocumentModule } from './modules/open-document/open-document.module
     AgencyModule,
     AgencyStatisticModule,
     AgencyVeteranModule,
+    AxiosModule,
     BannerModule,
     CommunicationToolModule,
     DocumentModule,

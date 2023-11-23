@@ -10,20 +10,21 @@ import { UpdateInformationDto, CreateInformationDto } from './dto';
 import { Information } from './information.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { InformationTypeEnum } from 'src/infra/shared/enum';
+import { AxiosService } from '../axios/axios.service';
 
 @Injectable()
 export class InformationService {
   constructor(
     @InjectRepository(Information)
-    private readonly informationRepository: Repository<Information>
+    private readonly informationRepository: Repository<Information>,
+    private readonly axiosService: AxiosService,
   ) {}
 
   async getAll(
     options: IPaginationOptions,
     where?: FindOptionsWhere<Information>,
   ): Promise<Pagination<Information>> {
-    return paginate<Information>(this.informationRepository, options, {
-    });
+    return paginate<Information>(this.informationRepository, options, {});
   }
 
   async getOne(id: string) {
@@ -38,13 +39,11 @@ export class InformationService {
     return data;
   }
 
-  async getNews(
-    options: IPaginationOptions,
-  ): Promise<Pagination<Information>> {    
+  async getNews(options: IPaginationOptions): Promise<Pagination<Information>> {
     return paginate<Information>(this.informationRepository, options, {
-      where:{
-        type:InformationTypeEnum.NEWS
-      }
+      where: {
+        type: InformationTypeEnum.NEWS,
+      },
     });
   }
 
@@ -52,9 +51,9 @@ export class InformationService {
     options: IPaginationOptions,
   ): Promise<Pagination<Information>> {
     return paginate<Information>(this.informationRepository, options, {
-      where:{
-        type:InformationTypeEnum.BREAKING_NEWS
-      }
+      where: {
+        type: InformationTypeEnum.BREAKING_NEWS,
+      },
     });
   }
 
@@ -62,9 +61,9 @@ export class InformationService {
     options: IPaginationOptions,
   ): Promise<Pagination<Information>> {
     return paginate<Information>(this.informationRepository, options, {
-      where:{
-        type:InformationTypeEnum.EVENT
-      }
+      where: {
+        type: InformationTypeEnum.EVENT,
+      },
     });
   }
 
@@ -72,9 +71,9 @@ export class InformationService {
     options: IPaginationOptions,
   ): Promise<Pagination<Information>> {
     return paginate<Information>(this.informationRepository, options, {
-      where:{
-        type:InformationTypeEnum.ANNOUNCEMENT
-      }
+      where: {
+        type: InformationTypeEnum.ANNOUNCEMENT,
+      },
     });
   }
 
@@ -82,13 +81,17 @@ export class InformationService {
     options: IPaginationOptions,
   ): Promise<Pagination<Information>> {
     return paginate<Information>(this.informationRepository, options, {
-      where:{
-        type:InformationTypeEnum.ADDITIONAL_PAGE
-      }
+      where: {
+        type: InformationTypeEnum.ADDITIONAL_PAGE,
+      },
     });
   }
 
   async deleteOne(id: string) {
+    const data = await this.getOne(id);
+    if (data.url) {
+      this.axiosService.deleteFile(data.url);
+    }
     const response = await this.informationRepository.delete(id).catch(() => {
       throw new NotFoundException('data not found');
     });
@@ -96,12 +99,12 @@ export class InformationService {
   }
 
   async change(value: UpdateInformationDto, id: string) {
-   const data = await this.informationRepository.update(id,value)
-   return data
+    const data = await this.informationRepository.update(id, value);
+    return data;
   }
 
   async create(value: CreateInformationDto) {
-    const data = this.informationRepository.create(value)
-    return await this.informationRepository.save(data)
+    const data = this.informationRepository.create(value);
+    return await this.informationRepository.save(data);
   }
 }
