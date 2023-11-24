@@ -23,7 +23,7 @@ class CreateOpenDocumentDto {
     description: `code`,
     example: 'Document code',
   })
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   code: string;
 
