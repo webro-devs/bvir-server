@@ -24,6 +24,7 @@ import { ManagementApparatusTypeModule } from './modules/menagement-apparatus-ty
 import { OpenDocumentModule } from './modules/open-document/open-document.module';
 import { AxiosModule } from './modules/axios/axios.module';
 import { SubsidyInformationModule } from './modules/subsidy-information/subsidy-information.module';
+import { DefaultPageModule } from './modules/default-page/default-page.module';
 
 @Module({
   imports: [
@@ -45,6 +46,7 @@ import { SubsidyInformationModule } from './modules/subsidy-information/subsidy-
     AxiosModule,
     BannerModule,
     CommunicationToolModule,
+    DefaultPageModule,
     DocumentModule,
     GalleryModule,
     InformationModule,

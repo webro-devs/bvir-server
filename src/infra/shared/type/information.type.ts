@@ -1,2 +1,2 @@
-type InformationType = "news" | "announcement" | "event" | "breaking news" | "additional page";
+type InformationType = "news" | "announcement" | "event" | "breaking news";
 export default InformationType;

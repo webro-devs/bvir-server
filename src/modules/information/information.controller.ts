@@ -85,17 +85,6 @@ export class InformationController {
   }
 
   @Public()
-  @Get('/additional-pages')
-  @ApiOperation({ summary: 'Method: returns additional-pages' })
-  @ApiOkResponse({
-    description: 'The additional-pages was returned successfully',
-  })
-  @HttpCode(HttpStatus.OK)
-  async getAdditionalPages(@Route() route: string, @Query() query: PaginationDto){
-    return await this.informationService.getAdditionalPage({ ...query, route });
-  }
-
-  @Public()
   @Get('/:id')
   @ApiOperation({ summary: 'Method: returns single information by id' })
   @ApiOkResponse({

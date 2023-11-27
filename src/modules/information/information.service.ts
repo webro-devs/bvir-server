@@ -77,16 +77,6 @@ export class InformationService {
     });
   }
 
-  async getAdditionalPage(
-    options: IPaginationOptions,
-  ): Promise<Pagination<Information>> {
-    return paginate<Information>(this.informationRepository, options, {
-      where: {
-        type: InformationTypeEnum.ADDITIONAL_PAGE,
-      },
-    });
-  }
-
   async deleteOne(id: string) {
     const data = await this.getOne(id);
     if (data.url) {
