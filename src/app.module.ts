@@ -23,6 +23,7 @@ import { AgencyVeteranModule } from './modules/agency-veteran/agency-veteran.mod
 import { ManagementApparatusTypeModule } from './modules/menagement-apparatus-type/management-apparatus-type.module';
 import { OpenDocumentModule } from './modules/open-document/open-document.module';
 import { AxiosModule } from './modules/axios/axios.module';
+import { SubsidyInformationModule } from './modules/subsidy-information/subsidy-information.module';
 
 @Module({
   imports: [
@@ -52,6 +53,7 @@ import { AxiosModule } from './modules/axios/axios.module';
     ManagementApparatusTypeModule,
     OpenDocumentModule,
     StatisticModule,
+    SubsidyInformationModule,
     TerritorialDivisionModule,
     TerritorialManagementModule,
     UsefulLinkModule,
