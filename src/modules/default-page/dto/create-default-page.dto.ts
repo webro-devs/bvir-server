@@ -7,7 +7,7 @@ class CreateDefaultPageDto {
   })
   @IsNotEmpty()
   @IsString()
-  side: string;
+  readonly side: string;
 
   @ApiProperty({
     description: `type`,

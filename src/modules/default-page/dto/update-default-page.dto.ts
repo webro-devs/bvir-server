@@ -7,7 +7,7 @@ class UpdateDefaultPageDto {
   })
   @IsOptional()
   @IsString()
-  side: string;
+  readonly side: string;
 
   @ApiProperty({
     description: `type`,
