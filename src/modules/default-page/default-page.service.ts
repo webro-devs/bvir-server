@@ -31,6 +31,9 @@ export class DefaultPageService {
         type,
         side,
       },
+      order:{
+        date:"DESC"
+      }
     });
   }
 

@@ -24,7 +24,11 @@ export class InformationService {
     options: IPaginationOptions,
     where?: FindOptionsWhere<Information>,
   ): Promise<Pagination<Information>> {
-    return paginate<Information>(this.informationRepository, options, {});
+    return paginate<Information>(this.informationRepository, options, {
+      order:{
+        date:"DESC"
+      }
+    });
   }
 
   async getOne(id: string) {
@@ -44,6 +48,9 @@ export class InformationService {
       where: {
         type: InformationTypeEnum.NEWS,
       },
+      order:{
+        date:"DESC"
+      }
     });
   }
 
@@ -54,6 +61,9 @@ export class InformationService {
       where: {
         type: InformationTypeEnum.BREAKING_NEWS,
       },
+      order:{
+        date:"DESC"
+      }
     });
   }
 
@@ -64,6 +74,9 @@ export class InformationService {
       where: {
         type: InformationTypeEnum.EVENT,
       },
+      order:{
+        date:"DESC"
+      }
     });
   }
 

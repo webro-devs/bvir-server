@@ -20,7 +20,11 @@ export class SubsidyInformationService {
   async getAll(
     options: IPaginationOptions,
   ): Promise<Pagination<SubsidyInformation>> {
-    return paginate<SubsidyInformation>(this.subsidyInformationRepository, options, {});
+    return paginate<SubsidyInformation>(this.subsidyInformationRepository, options, {
+      order:{
+        date:"DESC"
+      }
+    });
   }
 
   async getOne(id: string) {

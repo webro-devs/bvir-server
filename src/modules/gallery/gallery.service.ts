@@ -24,7 +24,11 @@ export class GalleryService {
     options: IPaginationOptions,
     where?: FindOptionsWhere<Gallery>,
   ): Promise<Pagination<Gallery>> {
-    return paginate<Gallery>(this.galleryRepository, options, {});
+    return paginate<Gallery>(this.galleryRepository, options, {
+      order:{
+        date:"DESC"
+      }
+    });
   }
 
   async getOne(id: string) {
@@ -46,6 +50,9 @@ export class GalleryService {
       where: {
         type: GalleryTypeEnum.PHOTO,
       },
+      order:{
+        date:"DESC"
+      }
     });
   }
 
@@ -56,6 +63,9 @@ export class GalleryService {
       where: {
         type: GalleryTypeEnum.VIDEO,
       },
+      order:{
+        date:"DESC"
+      }
     });
   }
 

@@ -21,7 +21,11 @@ export class DocumentService {
   async getAll(
     options: IPaginationOptions,
   ): Promise<Pagination<Document>> {
-    return paginate<Document>(this.documentRepository, options, {});
+    return paginate<Document>(this.documentRepository, options, {
+      order:{
+        date:"DESC"
+      }
+    });
   }
 
   async getOne(id: string) {
@@ -42,6 +46,9 @@ export class DocumentService {
     return paginate<Document>(this.documentRepository, options, {
       where:{
         type:DocumentTypeEnum.DOCUMENT_1
+      },
+      order:{
+        date:"DESC"
       }
     });
   }
@@ -52,6 +59,9 @@ export class DocumentService {
     return paginate<Document>(this.documentRepository, options, {
       where:{
         type:DocumentTypeEnum.DOCUMENT_2
+      },
+      order:{
+        date:"DESC"
       }
     });
   }
@@ -62,6 +72,9 @@ export class DocumentService {
     return paginate<Document>(this.documentRepository, options, {
       where:{
         type:DocumentTypeEnum.DOCUMENT_3
+      },
+      order:{
+        date:"DESC"
       }
     });
   }
@@ -72,6 +85,9 @@ export class DocumentService {
     return paginate<Document>(this.documentRepository, options, {
       where:{
         type:DocumentTypeEnum.DOCUMENT_4
+      },
+      order:{
+        date:"DESC"
       }
     });
   }
@@ -82,6 +98,9 @@ export class DocumentService {
     return paginate<Document>(this.documentRepository, options, {
       where:{
         type:DocumentTypeEnum.DOCUMENT_5
+      },
+      order:{
+        date:"DESC"
       }
     });
   }

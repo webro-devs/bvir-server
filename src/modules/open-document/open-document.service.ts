@@ -24,7 +24,12 @@ export class OpenDocumentService {
     options: IPaginationOptions,
     where
   ): Promise<Pagination<OpenDocument>> {
-    return paginate<OpenDocument>(this.openDocumentRepository, options, {where});
+    return paginate<OpenDocument>(this.openDocumentRepository, options, {
+      where,
+      order:{
+        date:"DESC"
+      }
+    });
   }
 
   async getOne(id: string) {
@@ -47,6 +52,9 @@ export class OpenDocumentService {
       where:{
         type:OpenDocumentTypeEnum.BUDGET_LEGISLATION_INFORMATION,
         ...where
+      },
+      order:{
+        date:"DESC"
       }
     });
   }
@@ -59,6 +67,9 @@ export class OpenDocumentService {
       where:{
         type:OpenDocumentTypeEnum.ORGANIZATION_INCLUDED,
         ...where
+      },
+      order:{
+        date:"DESC"
       }
     });
   }
@@ -71,6 +82,9 @@ export class OpenDocumentService {
       where:{
         type:OpenDocumentTypeEnum.PF,
         ...where
+      },
+      order:{
+        date:"DESC"
       }
     });
   }
