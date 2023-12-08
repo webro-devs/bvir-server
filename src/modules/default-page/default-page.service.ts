@@ -12,6 +12,10 @@ export class DefaultPageService {
     private readonly defaultPageRepository: Repository<DefaultPage>,
   ) {}
 
+  async getAll(){
+    return await this.defaultPageRepository.find()
+  }
+
   async getOne(id: string) {
     const data = await this.defaultPageRepository
       .findOne({

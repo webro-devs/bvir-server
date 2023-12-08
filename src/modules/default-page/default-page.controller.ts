@@ -39,6 +39,17 @@ export class DefaultPageController {
   }
 
   @Public()
+  @Get('/get-all')
+  @ApiOperation({ summary: 'Method: returns all default page' })
+  @ApiOkResponse({
+    description: 'The default page were returned successfully',
+  })
+  @HttpCode(HttpStatus.OK)
+  async getAll() {
+    return await this.defaultPageService.getAll();
+  }
+
+  @Public()
   @Get('/:id')
   @ApiOperation({ summary: 'Method: returns single default page by id' })
   @ApiOkResponse({
