@@ -48,6 +48,9 @@ export class TerritorialDivision {
   @Column({type:"text", nullable:true})
   titleEn: string;
 
+  @Column({ type: 'varchar', nullable:true })
+  code: string;
+
   @OneToMany(()=>TerritorialManagement, tr=>tr.territorialDivision)
   territorialManagements:TerritorialManagement[]
 }

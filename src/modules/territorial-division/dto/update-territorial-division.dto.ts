@@ -59,7 +59,7 @@ class UpdateTerritorialDivisionDto {
 
   @ApiProperty({
     description: `areaUz`,
-    example: "...",
+    example: '...',
   })
   @IsOptional()
   @IsString()
@@ -67,7 +67,7 @@ class UpdateTerritorialDivisionDto {
 
   @ApiProperty({
     description: `areaRu`,
-    example: "...",
+    example: '...',
   })
   @IsOptional()
   @IsString()
@@ -75,7 +75,7 @@ class UpdateTerritorialDivisionDto {
 
   @ApiProperty({
     description: `areaEn`,
-    example: "...",
+    example: '...',
   })
   @IsOptional()
   @IsString()
@@ -83,7 +83,7 @@ class UpdateTerritorialDivisionDto {
 
   @ApiProperty({
     description: `titleUz`,
-    example: "...",
+    example: '...',
   })
   @IsOptional()
   @IsString()
@@ -91,7 +91,7 @@ class UpdateTerritorialDivisionDto {
 
   @ApiProperty({
     description: `titleRu`,
-    example: "...",
+    example: '...',
   })
   @IsOptional()
   @IsString()
@@ -99,10 +99,18 @@ class UpdateTerritorialDivisionDto {
 
   @ApiProperty({
     description: `titleEn`,
-    example: "...",
+    example: '...',
   })
   @IsOptional()
   @IsString()
   readonly titleEn: string;
+
+  @ApiProperty({
+    description: `code`,
+    example: '...',
+  })
+  @IsOptional()
+  @IsString()
+  readonly code: string;
 }
 export default UpdateTerritorialDivisionDto;

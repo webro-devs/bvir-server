@@ -104,6 +104,14 @@ class CreateTerritorialDivisionDto {
   @IsOptional()
   @IsString()
   readonly titleEn: string;
+
+  @ApiProperty({
+    description: `code`,
+    example: "...",
+  })
+  @IsOptional()
+  @IsString()
+  readonly code: string;
 }
 
 export default CreateTerritorialDivisionDto;
