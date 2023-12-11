@@ -8,7 +8,7 @@ export class DefaultPage {
   @Column({ type: 'varchar' })
   type: string;
 
-  @Column({ type: 'varchar' })
+  @Column({ type: 'varchar', nullable:true })
   side: string;
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })

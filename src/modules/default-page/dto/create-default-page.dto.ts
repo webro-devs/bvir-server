@@ -5,7 +5,7 @@ class CreateDefaultPageDto {
     description: `side`,
     example: 'right',
   })
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   readonly side: string;
 
