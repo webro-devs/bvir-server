@@ -44,7 +44,7 @@ export class OpenDocumentController {
   @HttpCode(HttpStatus.OK)
   async getAll(
     @Route() route: string,
-    @Query() query: PaginationDto & QueryOpenDocumentDto,
+    @Query() query: QueryOpenDocumentDto,
     @Req() req,
   ) {
     return await this.openDocumentService.getAll(
@@ -64,7 +64,7 @@ export class OpenDocumentController {
   @HttpCode(HttpStatus.OK)
   async getRegulatoryDoc(
     @Route() route: string,
-    @Query() query: PaginationDto & QueryOpenDocumentDto,
+    @Query() query: QueryOpenDocumentDto,
     @Req() req,
   ) {
     return await this.openDocumentService.getBudgetOpenDocument(
@@ -102,7 +102,7 @@ export class OpenDocumentController {
   @HttpCode(HttpStatus.OK)
   async getSubsidyDoc(
     @Route() route: string,
-    @Query() query: PaginationDto & QueryOpenDocumentDto,
+    @Query() query: QueryOpenDocumentDto,
     @Req() req,
   ) {
     return await this.openDocumentService.getFpOpenDocument(
