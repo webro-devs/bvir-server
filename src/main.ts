@@ -46,7 +46,7 @@ async function bootstrap() {
   SwaggerModule.setup('docs', app, document, {
     swaggerOptions: {
       tagsSorter: 'alpha',
-      operationsSorter: 'alpha',
+      operationsSorter: 'method'
     },
   });
 
