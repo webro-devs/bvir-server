@@ -84,7 +84,7 @@ export class OpenDocumentController {
   @HttpCode(HttpStatus.OK)
   async getOnlineCreditDoc(
     @Route() route: string,
-    @Query() query: PaginationDto & QueryOpenDocumentDto,
+    @Query() query: QueryOpenDocumentDto,
     @Req() req,
   ) {
     return await this.openDocumentService.getOrganizationOpenDocument(
