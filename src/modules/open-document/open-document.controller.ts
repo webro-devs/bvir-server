@@ -29,6 +29,7 @@ import { OpenDocumentService } from './open-document.service';
 import { PaginationDto } from '../../infra/shared/dto';
 import { Route } from '../../infra/shared/decorators/route.decorator';
 import { Public } from '../auth/decorators/public.decorator';
+import { OpenDocumentTypeEnum } from 'src/infra/shared/enum';
 
 @ApiTags('Open-Document')
 @Controller('open-document')
@@ -67,8 +68,9 @@ export class OpenDocumentController {
     @Query() query: QueryOpenDocumentDto,
     @Req() req,
   ) {
-    return await this.openDocumentService.getBudgetOpenDocument(
+    return await this.openDocumentService.getDocument(
       {...query,route},
+      OpenDocumentTypeEnum.BUDGET_LEGISLATION_INFORMATION,
       req['where'],
     );
   }
@@ -87,8 +89,28 @@ export class OpenDocumentController {
     @Query() query: QueryOpenDocumentDto,
     @Req() req,
   ) {
-    return await this.openDocumentService.getOrganizationOpenDocument(
+    return await this.openDocumentService.getDocument(
       {...query,route},
+      OpenDocumentTypeEnum.ORGANIZATION_INCLUDED,
+      req['where'],
+    );
+  }
+
+  @Public()
+  @Get('/subisiyda-information')
+  @ApiOperation({ summary: 'Method: subisiyda information documents' })
+  @ApiOkResponse({
+    description: 'The subisiyda information documents were returned successfully',
+  })
+  @HttpCode(HttpStatus.OK)
+  async getSubsidyInformation(
+    @Route() route: string,
+    @Query() query: QueryOpenDocumentDto,
+    @Req() req,
+  ) {
+    return await this.openDocumentService.getDocument(
+      {...query,route},
+      OpenDocumentTypeEnum.SUBSIDYA_INFORMATION,
       req['where'],
     );
   }
@@ -105,8 +127,9 @@ export class OpenDocumentController {
     @Query() query: QueryOpenDocumentDto,
     @Req() req,
   ) {
-    return await this.openDocumentService.getFpOpenDocument(
+    return await this.openDocumentService.getDocument(
       {...query,route},
+      OpenDocumentTypeEnum.PF,
       req['where'],
     );
   }

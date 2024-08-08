@@ -44,43 +44,14 @@ export class OpenDocumentService {
     return data;
   }
 
-  async getBudgetOpenDocument(
+  async getDocument(
     options: IPaginationOptions,
+    type:OpenDocumentTypeEnum,
     where
   ): Promise<Pagination<OpenDocument>> {
     return paginate<OpenDocument>(this.openDocumentRepository, options, {
       where:{
-        type:OpenDocumentTypeEnum.BUDGET_LEGISLATION_INFORMATION,
-        ...where
-      },
-      order:{
-        date:"DESC"
-      }
-    });
-  }
-
-  async getOrganizationOpenDocument(
-    options: IPaginationOptions,
-    where
-  ): Promise<Pagination<OpenDocument>> {
-    return paginate<OpenDocument>(this.openDocumentRepository, options, {
-      where:{
-        type:OpenDocumentTypeEnum.ORGANIZATION_INCLUDED,
-        ...where
-      },
-      order:{
-        date:"DESC"
-      }
-    });
-  }
-
-  async getFpOpenDocument(
-    options: IPaginationOptions,
-    where
-  ): Promise<Pagination<OpenDocument>> {
-    return paginate<OpenDocument>(this.openDocumentRepository, options, {
-      where:{
-        type:OpenDocumentTypeEnum.PF,
+        type,
         ...where
       },
       order:{
